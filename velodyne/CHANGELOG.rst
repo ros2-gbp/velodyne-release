@@ -1,6 +1,18 @@
 Change history
 ==============
 
+
+1.1.0 (2013-07-16)
+------------------
+
+ * Fix build problems due to PCL 1.7 API incompatibilities (`#8`_),
+   thanks to William Woodall.  This version no longer works with
+   earlier PCL releases.
+ * Fix errors with Mac OSX compiler (`#8`_).
+ * Install `pluginlib` XML files (`#9`_).
+ * Install some launch and parameter files.
+ * Enable unit tests when `CATKIN_ENABLE_TESTING` is set (`#10`_).
+
 1.0.1 (2013-06-15)
 ------------------
 
@@ -11,6 +23,11 @@ Change history
 
  * Convert to catkin (`#1`_).
  * Release to Hydro.
+
+0.9.2 (2013-07-08)
+------------------
+
+ * Fix Groovy build problem (`#7`_).
 
 0.9.1 (2012-06-05)
 ------------------
@@ -53,3 +70,7 @@ Change history
 
 .. _`#1`: https://github.com/ros-drivers/velodyne/issues/1
 .. _`#4`: https://github.com/ros-drivers/velodyne/issues/4
+.. _`#7`: https://github.com/ros-drivers/velodyne/issues/7
+.. _`#8`: https://github.com/ros-drivers/velodyne/pull/8
+.. _`#9`: https://github.com/ros-drivers/velodyne/issues/9
+.. _`#10`: https://github.com/ros-drivers/velodyne/issues/10
