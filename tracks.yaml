@@ -13,6 +13,7 @@ tracks:
     name: velodyne
     patches: null
     release_inc: '0'
+    release_repo_url: null
     release_tag: velodyne-:{version}
     ros_distro: hydro
     vcs_type: git
