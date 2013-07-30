@@ -49,7 +49,7 @@ install(DIRECTORY params/
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/params)
 
 if (CATKIN_ENABLE_TESTING)
-  message("${PROJECT_NAME} unit testing enabled")
+  message("-- ${PROJECT_NAME} unit testing enabled")
 
   # Download packet capture (PCAP) files containing test data.
   # Store them in devel-space, so rostest can easily find them.
@@ -63,13 +63,20 @@ if (CATKIN_ENABLE_TESTING)
     http://pr.willowgarage.com/data/velodyne/32e.pcap
     DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/tests
     MD5 e41d02aac34f0967c03a5597e1d554a9)
-  
+  catkin_download_test_data(
+    ${PROJECT_NAME}_tests_64e_s2.1-300-sztaki.pcap
+    http://pr.willowgarage.com/data/velodyne/64e_s2.1-300-sztaki.pcap
+    DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/tests
+    MD5 176c900ffb698f9b948a13e281ffc1a2)
+
   # unit tests
   add_rostest(tests/cloud_node_hz.test)
   add_rostest(tests/cloud_nodelet_hz.test)
   add_rostest(tests/cloud_node_32e_hz.test)
   add_rostest(tests/cloud_nodelet_32e_hz.test)
-  
+  add_rostest(tests/cloud_node_64e_s2.1_hz.test)
+  add_rostest(tests/cloud_nodelet_64e_s2.1_hz.test)
+
   ## These tests don't work well enough to be worth the effort of
   ## running them:
   #add_rostest(tests/transform_node_hz.test)
@@ -79,5 +86,5 @@ if (CATKIN_ENABLE_TESTING)
   ##roslaunch_add_file_check(launch)
 
 else ()
-  message("${PROJECT_NAME} unit testing disabled")
+  message("-- ${PROJECT_NAME} unit testing disabled")
 endif (CATKIN_ENABLE_TESTING)
