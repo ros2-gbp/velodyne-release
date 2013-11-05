@@ -1,7 +1,7 @@
 <package>
 
   <name>velodyne_driver</name>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <description>
     ROS device driver for Velodyne HDL-64E, and HDL-32 LIDARs.
   </description>
@@ -23,10 +23,12 @@
   <build_depend>nodelet</build_depend>
   <build_depend>pluginlib</build_depend>
   <build_depend>roscpp</build_depend>
-  <build_depend>roslaunch</build_depend>
-  <build_depend>rostest</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>velodyne_msgs</build_depend>
+
+  <!-- these build dependencies are only needed for unit testing -->
+  <build_depend>roslaunch</build_depend>
+  <build_depend>rostest</build_depend>
 
   <run_depend>diagnostic_updater</run_depend>
   <run_depend>libpcap</run_depend>
