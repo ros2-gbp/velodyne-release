@@ -1,0 +1,12 @@
+Source: ros-hydro-velodyne-pointcloud
+Section: misc
+Priority: extra
+Maintainer: Jack O'Quin <jack.oquin@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-angles, ros-hydro-catkin, ros-hydro-nodelet, ros-hydro-pcl-conversions, ros-hydro-pcl-ros, ros-hydro-pluginlib, ros-hydro-roscpp, ros-hydro-roslaunch, ros-hydro-roslib, ros-hydro-rostest, ros-hydro-sensor-msgs, ros-hydro-tf, ros-hydro-velodyne-driver, ros-hydro-velodyne-msgs, yaml-cpp
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-hydro-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python-yaml, ros-hydro-angles, ros-hydro-nodelet, ros-hydro-pcl-ros, ros-hydro-pluginlib, ros-hydro-roscpp, ros-hydro-roslib, ros-hydro-sensor-msgs, ros-hydro-tf, ros-hydro-velodyne-driver, ros-hydro-velodyne-msgs, yaml-cpp
+Description: Point cloud conversions for Velodyne 3D LIDARs.
