@@ -1,6 +1,12 @@
 Change history
 ==============
 
+1.1.2 (2013-11-05)
+-------------------
+
+ * Move unit test data to download.ros.org (`#18`_).
+ * velodyne_driver: Install missing vdump script (`#17`_).
+ * velodyne_pointcloud: Install missing gen_calibration.py script (`#20`_).
 
 1.1.1 (2013-07-30)
 ------------------
@@ -86,3 +92,6 @@ Change history
 .. _`#12`: https://github.com/ros-drivers/velodyne/pull/12
 .. _`#13`: https://github.com/ros-drivers/velodyne/issues/13
 .. _`#14`: https://github.com/ros-drivers/velodyne/pull/14
+.. _`#17`: https://github.com/ros-drivers/velodyne/issues/17
+.. _`#18`: https://github.com/ros-drivers/velodyne/issues/18
+.. _`#20`: https://github.com/ros-drivers/velodyne/issues/20
