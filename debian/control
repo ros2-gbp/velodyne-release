@@ -1,0 +1,12 @@
+Source: ros-hydro-velodyne-msgs
+Section: misc
+Priority: extra
+Maintainer: Jack O'Quin <jack.oquin@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin, ros-hydro-message-generation, ros-hydro-std-msgs
+Homepage: http://ros.org/wiki/velodyne_msgs
+Standards-Version: 3.9.2
+
+Package: ros-hydro-velodyne-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-message-runtime, ros-hydro-std-msgs
+Description: ROS message definitions for Velodyne 3D LIDARs.
