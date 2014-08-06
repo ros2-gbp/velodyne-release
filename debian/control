@@ -1,0 +1,12 @@
+Source: ros-indigo-velodyne-pointcloud
+Section: misc
+Priority: extra
+Maintainer: Jack O'Quin <jack.oquin@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libyaml-cpp-dev, ros-indigo-angles, ros-indigo-catkin, ros-indigo-dynamic-reconfigure, ros-indigo-nodelet, ros-indigo-pcl-conversions, ros-indigo-pcl-ros, ros-indigo-pluginlib, ros-indigo-roscpp, ros-indigo-roslaunch, ros-indigo-roslib, ros-indigo-rostest, ros-indigo-sensor-msgs, ros-indigo-tf, ros-indigo-velodyne-driver, ros-indigo-velodyne-msgs
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-indigo-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libyaml-cpp-dev, python-yaml, ros-indigo-angles, ros-indigo-dynamic-reconfigure, ros-indigo-nodelet, ros-indigo-pcl-ros, ros-indigo-pluginlib, ros-indigo-roscpp, ros-indigo-roslib, ros-indigo-sensor-msgs, ros-indigo-tf, ros-indigo-velodyne-driver, ros-indigo-velodyne-msgs
+Description: Point cloud conversions for Velodyne 3D LIDARs.
