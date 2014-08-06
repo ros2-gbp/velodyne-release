@@ -1,3 +1,28 @@
+## velodyne (indigo) - 1.2.0-0
+
+The packages in the `velodyne` repository were released into the `indigo` distro by running `/usr/bin/bloom-release velodyne -r indigo -t indigo -n` on `Wed, 06 Aug 2014 15:33:43 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.2.0-0`
+
+Versions of tools used:
+- bloom version: `0.5.11`
+- catkin_pkg version: `0.2.4`
+- rosdep version: `0.10.30`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## velodyne (hydro) - 1.1.2-1
 
 The packages in the `velodyne` repository were released into the `hydro` distro by running `/usr/bin/bloom-release velodyne -r hydro -t hydro` on `Sat, 24 May 2014 20:27:16 -0000`
