@@ -1,0 +1,12 @@
+Source: ros-indigo-velodyne-driver
+Section: misc
+Priority: extra
+Maintainer: Jack O'Quin <jack.oquin@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-indigo-catkin, ros-indigo-diagnostic-updater, ros-indigo-nodelet, ros-indigo-pluginlib, ros-indigo-roscpp, ros-indigo-roslaunch, ros-indigo-rostest, ros-indigo-tf, ros-indigo-velodyne-msgs
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-indigo-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-indigo-diagnostic-updater, ros-indigo-nodelet, ros-indigo-pluginlib, ros-indigo-roscpp, ros-indigo-tf, ros-indigo-velodyne-msgs
+Description: ROS device driver for Velodyne HDL-64E, and HDL-32 LIDARs.
