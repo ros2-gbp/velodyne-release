@@ -1,0 +1,12 @@
+Source: ros-indigo-velodyne
+Section: misc
+Priority: extra
+Maintainer: Jack O'Quin <jack.oquin@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-indigo-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-velodyne-driver, ros-indigo-velodyne-msgs, ros-indigo-velodyne-pointcloud
+Description: Basic ROS support for the Velodyne 3D LIDARs.
