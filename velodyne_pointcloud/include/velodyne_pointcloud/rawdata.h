@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include <string>
 #include <boost/format.hpp>
+#include <math.h>
 
 #include <ros/ros.h>
 #include <pcl_ros/point_cloud.h>
@@ -86,8 +87,6 @@ namespace velodyne_rawdata
   static const int BLOCKS_PER_PACKET = 12;
   static const int PACKET_STATUS_SIZE = 4;
   static const int SCANS_PER_PACKET = (SCANS_PER_BLOCK * BLOCKS_PER_PACKET);
-  static const int PACKETS_PER_REV = 260;
-  static const int SCANS_PER_REV = (SCANS_PER_PACKET * PACKETS_PER_REV);
 
   /** \brief Raw Velodyne packet.
    *
@@ -130,6 +129,9 @@ namespace velodyne_rawdata
     int setup(ros::NodeHandle private_nh);
 
     void unpack(const velodyne_msgs::VelodynePacket &pkt, VPointCloud &pc);
+    
+    void setParameters(double min_range, double max_range, double view_direction,
+                       double view_width);
 
   private:
 
@@ -138,6 +140,11 @@ namespace velodyne_rawdata
       std::string calibrationFile;     ///< calibration file name
       double max_range;                ///< maximum range to publish
       double min_range;                ///< minimum range to publish
+      int min_angle;                   ///< minimum angle to publish
+      int max_angle;                   ///< maximum angle to publish
+      
+      double tmp_min_angle;
+      double tmp_max_angle;
     } Config;
     Config config_;
 
