@@ -1,0 +1,12 @@
+Source: ros-kinetic-velodyne
+Section: misc
+Priority: extra
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-velodyne-driver, ros-kinetic-velodyne-laserscan, ros-kinetic-velodyne-msgs, ros-kinetic-velodyne-pointcloud
+Description: Basic ROS support for the Velodyne 3D LIDARs.
