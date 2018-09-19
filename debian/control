@@ -1,0 +1,12 @@
+Source: ros-lunar-velodyne-driver
+Section: misc
+Priority: extra
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-lunar-catkin, ros-lunar-diagnostic-updater, ros-lunar-dynamic-reconfigure, ros-lunar-nodelet, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-roslaunch, ros-lunar-rostest, ros-lunar-tf, ros-lunar-velodyne-msgs
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-lunar-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-lunar-diagnostic-updater, ros-lunar-dynamic-reconfigure, ros-lunar-nodelet, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-tf, ros-lunar-velodyne-msgs
+Description: ROS device driver for Velodyne 3D LIDARs.
