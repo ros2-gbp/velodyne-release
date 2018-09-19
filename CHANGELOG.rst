@@ -1,6 +1,15 @@
 Change history
 ==============
 
+1.4.0 (2018-09-19)
+------------------
+* Updated all package.xmls to ver 2. Cleaned up catkin_lint errors.
+  All package.xml files are now compatible with version 2 of the
+  package.xml specification in REP 140. Removed some unnecessary
+  execute permissions on a few files. Fixed a missing test_depend.
+* Updated cut_at_specified_angle_feature with latest master version.
+* Contributors: Andre Volk, Joshua Whitley
+
 1.3.0 (2017-11-10)
 ------------------
 
