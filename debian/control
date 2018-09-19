@@ -1,0 +1,12 @@
+Source: ros-lunar-velodyne-pointcloud
+Section: misc
+Priority: extra
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libyaml-cpp-dev, ros-lunar-angles, ros-lunar-catkin, ros-lunar-dynamic-reconfigure, ros-lunar-nodelet, ros-lunar-pcl-conversions, ros-lunar-pcl-ros, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-roslaunch, ros-lunar-roslib, ros-lunar-rostest, ros-lunar-rosunit, ros-lunar-sensor-msgs, ros-lunar-tf, ros-lunar-tf2-ros, ros-lunar-velodyne-driver, ros-lunar-velodyne-msgs
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-lunar-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libyaml-cpp-dev, ros-lunar-angles, ros-lunar-dynamic-reconfigure, ros-lunar-nodelet, ros-lunar-pcl-conversions, ros-lunar-pcl-ros, ros-lunar-pluginlib, ros-lunar-roscpp, ros-lunar-roslib, ros-lunar-sensor-msgs, ros-lunar-tf, ros-lunar-velodyne-driver, ros-lunar-velodyne-laserscan, ros-lunar-velodyne-msgs
+Description: Point cloud conversions for Velodyne 3D LIDARs.
