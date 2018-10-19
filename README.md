@@ -1,3 +1,31 @@
+## velodyne (melodic) - 1.5.0-0
+
+The packages in the `velodyne` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --ros-distro melodic --track melodic velodyne` on `Fri, 19 Oct 2018 19:49:49 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: https://github.com/ros-drivers-gbp/velodyne-release.git
+- rosdistro version: `1.4.0-0`
+- old version: `1.4.0-0`
+- new version: `1.5.0-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.7`
+- catkin_pkg version: `0.4.9`
+- rosdep version: `0.12.2`
+- rosdistro version: `0.6.9`
+- vcstools version: `0.1.40`
+
+
 ## velodyne (lunar) - 1.5.0-0
 
 The packages in the `velodyne` repository were released into the `lunar` distro by running `/usr/bin/bloom-release --ros-distro lunar --track lunar velodyne` on `Fri, 19 Oct 2018 19:44:18 -0000`
