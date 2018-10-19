@@ -1,0 +1,259 @@
+ros-lunar-velodyne-pointcloud (1.5.0-0xenial) xenial; urgency=high
+
+  * Merge pull request #164 <https://github.com/ros-drivers/velodyne/issues/164> from ros-drivers/maint/vlp_32c_support
+    Adding VLP-32C support.
+    This was tested by AutonomouStuff and several external users. Though it does not include new information that I've learned (it appears that the distance resolution is different <50m vs >=50m), it is a good start.
+  * Merge pull request #189 <https://github.com/ros-drivers/velodyne/issues/189> from kveretennicov/patch-1
+  * Fix malformed plugin description XML
+    ROS pluginlib only recognizes multiple <library> elements if they are under
+    <class_libraries> XML root. It silently ignores malformed XMLs with multiple
+    <library> "root"s and just reads the first one, due to relaxed way tinyxml2 does
+    parsing. Though if you do rosrun nodelet declared_nodelets, the issue is
+    reported properly.
+    See also similar issue in https://github.com/ros-perception/perception_pcl/issues/131
+  * Adding distance_resolution to test yaml files.
+  * Adding VLP-32C support.
+    Based on work done by @rockcdr. Adds distance_resolution calibration
+    value to support 0.004m distance resolution for VLP-32C.
+  * Contributors: Joshua Whitley, Konstantin Veretennicov
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Fri, 19 Oct 2018 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.4.0-0xenial) xenial; urgency=high
+
+  * Merge pull request #178 <https://github.com/ros-drivers/velodyne/issues/178> from sts-thm/bugfix_issue_`#174 <https://github.com/ros-drivers/velodyne/issues/174>`_
+    Bugfix issue #174 <https://github.com/ros-drivers/velodyne/issues/174>
+  * Merge pull request #177 <https://github.com/ros-drivers/velodyne/issues/177> from C-NR/feature/WrapPointcloudData
+    Feature/wrap pointcloud data
+  * Changes fixing deadlock for specific cut_angle values.
+  * moved definition of VPoint and VPointCloud back to namespace rawdata in rawdata.h
+  * put a wrapper around pointcloud data including a generic setter method to enable the use of arbitrary data structures  (pcl pointcloud, depth image, octomaps and so on) to be filled by just using RawData::unpack method with the wrapper object as parameter
+  * Merge pull request #170 <https://github.com/ros-drivers/velodyne/issues/170> from ros-drivers/maint/move_header_files
+    Moving header files to traditional location inside include folders.
+  * Merge pull request #160 <https://github.com/ros-drivers/velodyne/issues/160> from ros-drivers/maint/updating_package_xml_to_v2
+  * Updated all package.xmls to ver 2. Cleaned up catkin_lint errors.
+    All package.xml files are now compatible with version 2 of the
+    package.xml specification in REP 140. Removed some unnecessary
+    execute permissions on a few files. Fixed a missing test_depend.
+  * Merge pull request #136 <https://github.com/ros-drivers/velodyne/issues/136> from stsundermann/patch-1
+    Use std::abs instead of abs
+  * Adding missing 32C configuration file.
+  * Merge pull request #139 <https://github.com/ros-drivers/velodyne/issues/139> from ASDeveloper00/vlp32
+    Adding support for VLP-32C.
+  * Merge pull request #138 <https://github.com/ros-drivers/velodyne/issues/138> from volkandre/cut_at_specified_angle_feature
+    Cut at specified angle feature
+  * Updated default cut_angle parameters in launch files after switching from deg to rad.
+  * Use std::abs instead of abs
+    abs is the c version which returns an integer. This is probably not intended here, so use the templated std::abs function.
+  * Contributors: Andre Volk, Autonomoustuff Developer, CNR, Joshua Whitley, Kyle Rector, Stephan Sundermann, Tobias Athmer, kennouni
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Wed, 19 Sep 2018 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.3.0-0xenial) xenial; urgency=high
+
+  * Merge pull request #110 <https://github.com/ros-drivers/velodyne/issues/110> from kmhallen/master
+    Added velodyne_laserscan package
+  * Merge remote-tracking branch ros-drivers/master
+  * Merge pull request #129 <https://github.com/ros-drivers/velodyne/issues/129> from kmhallen/pluginlib_macro
+    Modern pluginlib macro
+  * Update to use non deprecated pluginlib macro
+  * Merge pull request #127 <https://github.com/ros-drivers/velodyne/issues/127> from swri-robotics/add_vlp16_hires_support
+    Add VLP16 Puck Hi-Res config file
+  * Add VLP16 Puck Hi-Res support
+  * velodyne_pointcloud: remove incorrect catkin_package() DEPENDS option (#93 <https://github.com/ros-drivers/velodyne/issues/93>)
+    This eliminates a CMake warning when building on Xenial.
+  * Merge pull request #111 <https://github.com/ros-drivers/velodyne/issues/111> from OrebroUniversity/master
+    Added an interface to set up raw data processing offline
+  * Added an interface to set up raw data processing from a locally defined calibration file. This method is useful when processing data offline from a bag file, without starting any ros master
+  * Added velodyne_laserscan package and inserted into existing launch files
+  * test multiple nodelet manager support (#108 <https://github.com/ros-drivers/velodyne/issues/108>)
+  * add launch args to support multiple devices (#108 <https://github.com/ros-drivers/velodyne/issues/108>)
+  * Merge pull request #105 <https://github.com/ros-drivers/velodyne/issues/105> from fudger/patch-1
+    Remove unused constants.
+  * Merge pull request #104 <https://github.com/ros-drivers/velodyne/issues/104> from altrouge/launch_options
+    Add more options in launch files.
+  * Rearranged alphabetically.
+  * Remove unused constants.
+    DISTANCE_MAX and DISTANCE_MAX_UNITS are not used anywhere in the code.
+    Furthermore, using them would lead to errors as both VLP-64 manuals state that returns above 120 m should not be used. The VLP-32 manual allows 70 m as the maximum valid sensor range.
+  * Merge pull request #103 <https://github.com/ros-drivers/velodyne/issues/103> from fudger/patch-1
+    Fix misleading typecasts.
+  * Add more options in launch files.
+    - rpm, device_ip, port, read_once, read_fast, repeat_delay
+  * Fix misleading typecasts.
+    intensity and VPoint::intensity are both of type float.
+  * update change history
+  * merge current master (#94 <https://github.com/ros-drivers/velodyne/issues/94>)
+  * Merge pull request #92 <https://github.com/ros-drivers/velodyne/issues/92> from adasta/master
+    GCC Build Warnings
+  * Modified velodyne_point_cloud/src/lib/rawdata.cc to address warning
+    that last_azimuth_diff variable may be used uninitialized.  Variable
+    is now initialized to 0 at creation.
+    velodyne/velodyne_pointcloud/src/lib/rawdata.cc:328:57: error: ‘last_azimuth_diff’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+    azimuth_corrected_f = azimuth + (azimuth_diff * ((dsr*VLP16_DSR_TOFFSET) + (firing*VLP16_FIRING_TOFFSET)) / VLP16_BLOCK_TDURATION);
+  * Modified  velodyne_pointcloud/src/conversion/colors.cc to remove
+    address build warning for strict-aliasing.
+    velodyne/velodyne_pointcloud/src/conversions/colors.cc:84:58:
+  * Merge pull request #89 <https://github.com/ros-drivers/velodyne/issues/89> from Tones29/feat_dynrec_driver
+    Add dynamic latency configuration to velodyne_driver
+  * velodyne_pointcloud: Fix compile warning "Wrong initialization order"
+  * velodyne_pointcloud: add dynamic reconfig update to change log (#78 <https://github.com/ros-drivers/velodyne/issues/78>)
+  * Merge branch fudger-reconfigure_transform_node
+  * velodyne_pointcloud: use recommended add_dependencies() CMake variable #78 <https://github.com/ros-drivers/velodyne/issues/78>
+  * velodyne_pointcloud: fix transform unit tests
+    Use tf2_ros static_transform_publisher for more consistent timing (#2 <https://github.com/ros-drivers/velodyne/issues/2>)
+  * Merge branch reconfigure_transform_node of https://github.com/fudger/velodyne
+  * prepare change history for coming Indigo release (#59 <https://github.com/ros-drivers/velodyne/issues/59>)
+  * calibration: unit test case improvements (#84 <https://github.com/ros-drivers/velodyne/issues/84>)
+  * calibration: read all intensities as float, then convert (#84 <https://github.com/ros-drivers/velodyne/issues/84>)
+  * calibration: add gtest for #84 <https://github.com/ros-drivers/velodyne/issues/84>
+    This currently fails on 64e_s2.1-sztaki.yaml and on issue_84_float_intensities.yaml.
+  * calibration: make max_intensity and min_intensity optional (#84 <https://github.com/ros-drivers/velodyne/issues/84>)
+    This fixes a regression in the 32e and VLP-16 calibrations which do not contain
+    intensity values. There is still a problem with the 64e_s2.1 calibration.
+  * Merge pull request #76 <https://github.com/ros-drivers/velodyne/issues/76> from pomerlef/master
+    Sign inversion in some equations
+  * Merge pull request #82 <https://github.com/ros-drivers/velodyne/issues/82> from ros-drivers/fix_pr_80
+    Fix pr 80; adding travis CI tests.
+  * fix the yaml-cpp 0.5 code paths
+  * Merge pull request #80 <https://github.com/ros-drivers/velodyne/issues/80> from ros-drivers/fix_yaml_import
+    allow floats in min/max_intensity and make horiz_offset_correction optional
+  * allow horiz_offset_correction to be optional with 0 as default
+  * allow floats instead of ints in min/max_intensity
+  * Resolve frame ID name using tf prefix.
+  * Improve coding style.
+  * Set up dynamic reconfiguration for transform_node.
+    Previously, transform_node has neither read parameters other than frame_id from the command line nor has it exposed these parameters via dynamic reconfigure. As parameters like max_range and view_width have been initialized to zero, the inconfigurable transform_node has returned an empty point cloud.
+    Now, transform_node launches an reconfigure server just as cloud_node. In contrast to cloud_node, transform node exposes another parameter for dynamic reconfiguration: frame_id, i.e. the frame of reference the incoming Velodyne points are transformed to.
+  * Merge pull request #77 <https://github.com/ros-drivers/velodyne/issues/77> from fudger/pretty_print
+    Fix output of calibration data onto console
+  * Add a missing space.
+  * Fix line that always indicates use of model VLP-16.
+  * Align console output of calibration data.
+  * Merge branch master of https://github.com/ros-drivers/velodyne
+  * resolve sign error
+  * Merge pull request #73 <https://github.com/ros-drivers/velodyne/issues/73> from fudger/master
+    Correct important data type error for VLP-16
+  * Fix data type error that distorts the point cloud.
+  * Fix and add a few comments.
+  * Merge pull request #68 <https://github.com/ros-drivers/velodyne/issues/68> from jlblancoc/patch-1
+    Remove unused variable
+  * Remove unused variable
+    I think that dsr was unused. See line 317:
+    for (int dsr=0; ...
+  * VLP-16: skip badly formatted data packets (#62 <https://github.com/ros-drivers/velodyne/issues/62>, #63 <https://github.com/ros-drivers/velodyne/issues/63>)
+  * restore VLP-16 min_range setting to 0.4 (#60 <https://github.com/ros-drivers/velodyne/issues/60>)
+    NOTE: There is still some other problem keeping that from working.
+  * permit min_range settings below 0.9 meters (#60 <https://github.com/ros-drivers/velodyne/issues/60>)
+    No known models are currently known to return closer measurements.
+  * Merge pull request #55 <https://github.com/ros-drivers/velodyne/issues/55> from lemiant/azimuth_bug_VLP16
+    Fixed azimuth overflow bug.
+  * Fixed azimuth overflow bug.
+    For interpolated azimuth values between 35999.5 and 36000.0 the nested round(fmod())
+    yields a value of 36000 which is invalid and overflows the pre-computed sin/cos arrays,
+    since they only go form 0..35999
+  * Merge pull request #51 <https://github.com/ros-drivers/velodyne/issues/51> from kunlileo/master
+    Added vertical sin angle correction
+  * Added vertical sin angle correction
+  * Merge pull request #47 <https://github.com/ros-drivers/velodyne/issues/47> from prclibo/master
+    fixed rounding bug in intensity calculation found by songshiyu
+  * fixed rounding bug in intensity calculation found by songshiyu
+  * fix some overly long C++ source lines
+  * Merge pull request #44 <https://github.com/ros-drivers/velodyne/issues/44> from SISegwayRmp/master
+    adding driver and pointcloud support for the VLP16
+  * missed the space in the file name which caused the build to fail, removed space before extension
+  * adding the VLP16 test scripts and updating the CMakeLists to include the test file from http://download.ros.org/data/velodyne/vlp16.pcap
+  * adding support for the VLP16
+  * Merge pull request #43 <https://github.com/ros-drivers/velodyne/issues/43> from prclibo/fix_rawdata
+    fixed point computation according to the 64e_s2(.1) velodyne manual
+  * fixed point computation according to the 64e_s2(.1) velodyne manual, with luopei"s help
+  * Merge pull request #41 <https://github.com/ros-drivers/velodyne/issues/41> from prclibo/master
+    fixed a calibration file parsing bug
+  * Merge pull request #42 <https://github.com/ros-drivers/velodyne/issues/42> from prclibo/fix_gen_calibration
+    fixed gen_calibration min/max intensity type
+  * fixed gen_calibration min/max intensity type
+  * fixed a calibration file parsing bug
+  * Contributors: Adam Stambler, Alex Rodrigues, Alexander Schaefer, Andreas Wachaja, Bo Li, Daniel Jartoux, Gabor Meszaros, Jack OQuin, Jose Luis Blanco-Claraco, Joshua Whitley, Kevin Hallenbeck, Kris Kozak, Kun Li, Micho Radovnikovich, Scott K Logan, Thomas Solatges, Todor Stoyanov, William Woodall, jack.oquin, libo24, phussey, piyushk, pomerlef
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Fri, 10 Nov 2017 06:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.2.0-0xenial) xenial; urgency=high
+
+  * velodyne_pointcloud: remove model-dependent "constants" from
+    rawdata.h (#28 <https://github.com/ros-drivers/velodyne/issues/28>)
+  * velodyne_pointcloud: change default min_range to 0.9 meters (#25 <https://github.com/ros-drivers/velodyne/issues/25>)
+  * Added support for YAML-CPP 0.5+ (#23 <https://github.com/ros-drivers/velodyne/pull/23>).
+  * Add dynamic_reconfigure feature.
+  * Add angular limits to the output point cloud, useful for omitting
+    part of it. (#22 <https://github.com/ros-drivers/velodyne/pull/22>).
+  * Contributors: Jack OQuin, Scott K Logan, Thomas Solatges
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Wed, 06 Aug 2014 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.1.2-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 05 Nov 2013 06:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.1.1-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 30 Jul 2013 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.1.0-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 16 Jul 2013 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.0.1-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Sat, 15 Jun 2013 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (1.0.0-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Fri, 14 Jun 2013 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.9.2-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Mon, 08 Jul 2013 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.9.1-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 05 Jun 2012 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.9.0-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 03 Apr 2012 05:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.2.6-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Wed, 23 Feb 2011 06:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.2.5-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Fri, 19 Nov 2010 06:00:00 -0000
+
+ros-lunar-velodyne-pointcloud (0.2.0-0xenial) xenial; urgency=high
+
+
+
+ -- Josh Whitley <jwhitley@autonomoustuff.com>  Tue, 17 Aug 2010 05:00:00 -0000
+
+
