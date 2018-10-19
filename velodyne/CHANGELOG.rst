@@ -1,6 +1,9 @@
 Change history
 ==============
 
+1.5.0 (2018-10-19)
+------------------
+
 1.4.0 (2018-09-19)
 ------------------
 * Merge pull request `#160 <https://github.com/ros-drivers/velodyne/issues/160>`_ from ros-drivers/maint/updating_package_xml_to_v2
