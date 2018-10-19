@@ -1,6 +1,9 @@
 Change history
 ==============
 
+1.5.0 (2018-10-19)
+------------------
+
 1.4.0 (2018-09-19)
 ------------------
 * Updated all package.xmls to ver 2. Cleaned up catkin_lint errors.
