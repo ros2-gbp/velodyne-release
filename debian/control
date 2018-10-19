@@ -1,0 +1,12 @@
+Source: ros-melodic-velodyne-driver
+Section: misc
+Priority: extra
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-melodic-catkin, ros-melodic-diagnostic-updater, ros-melodic-dynamic-reconfigure, ros-melodic-nodelet, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-roslaunch, ros-melodic-rostest, ros-melodic-tf, ros-melodic-velodyne-msgs
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-melodic-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-melodic-diagnostic-updater, ros-melodic-dynamic-reconfigure, ros-melodic-nodelet, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-tf, ros-melodic-velodyne-msgs
+Description: ROS device driver for Velodyne 3D LIDARs.
