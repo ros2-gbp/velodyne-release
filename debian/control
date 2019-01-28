@@ -1,0 +1,12 @@
+Source: ros-kinetic-velodyne-laserscan
+Section: misc
+Priority: extra
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-dynamic-reconfigure, ros-kinetic-nodelet, ros-kinetic-roscpp, ros-kinetic-roslaunch, ros-kinetic-rostest, ros-kinetic-sensor-msgs
+Homepage: http://ros.org/wiki/velodyne_laserscan
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-velodyne-laserscan
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-dynamic-reconfigure, ros-kinetic-nodelet, ros-kinetic-roscpp, ros-kinetic-sensor-msgs
+Description: Extract a single ring of a Velodyne PointCloud2 and publish it as a LaserScan message
