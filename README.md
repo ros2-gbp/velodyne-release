@@ -1,3 +1,31 @@
+## velodyne (kinetic) - 1.5.2-0
+
+The packages in the `velodyne` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --ros-distro kinetic --track kinetic velodyne` on `Mon, 28 Jan 2019 18:40:44 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: https://github.com/ros-drivers-gbp/velodyne-release.git
+- rosdistro version: `1.5.1-0`
+- old version: `1.5.1-0`
+- new version: `1.5.2-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.1`
+- catkin_pkg version: `0.4.10`
+- rosdep version: `0.14.0`
+- rosdistro version: `0.7.2`
+- vcstools version: `0.1.40`
+
+
 ## velodyne (indigo) - 1.5.2-0
 
 The packages in the `velodyne` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --ros-distro indigo --track indigo velodyne` on `Mon, 28 Jan 2019 18:36:02 -0000`
