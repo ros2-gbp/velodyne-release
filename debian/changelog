@@ -1,0 +1,209 @@
+ros-noetic-velodyne-driver (1.6.0-1buster) buster; urgency=high
+
+  * Unify tf frame parameters between transform and cloud nodes (#344 <https://github.com/ros-drivers/velodyne/issues/344>)
+    * Unify tf frame parameters between transform and cloud nodes
+    * Use more common ROS terminology instead of 'htm'
+    * Just use tf listener when necessary
+    * Migrate package to tf2
+    * Explicitly store sensor frame in a dedicated variable to make code easier to read
+    * Avoid unnecessary transforms when sensor_frame == target_frame
+    Co-authored-by: anre <mailto:andreas.reich@unibw.de>
+  * Updating maintainer email address.
+  * when device poll timeouts, do not stop node
+  * use correct node handles and node names for diagnostic_updater::Updater
+  * Added config option to timestamp a full scan based on first velo packet instead of last packet
+  * Merge pull request #214 <https://github.com/ros-drivers/velodyne/issues/214> from spuetz/feature/opc_nopcl
+    Container cleanup and organized pointclouds
+  * Merge pull request #243 <https://github.com/ros-drivers/velodyne/issues/243> from dandedrick/reconfig-enable
+    driver: add enabled reconfigure param
+  * Merge pull request #234 <https://github.com/ros-drivers/velodyne/issues/234> from kmhallen/c++11
+    Set minimum C++ standard to C++11
+  * Merge pull request #222 <https://github.com/ros-drivers/velodyne/issues/222> from mpitropov/feat_Use_GPS_time
+    Add flag to enable using GPS time from within the Velodyne packet instead of ROS time for scan.
+  * Merge pull request #220 <https://github.com/ros-drivers/velodyne/issues/220> from nbussas/static
+    Transform static variable into member
+  * Merge pull request #216 <https://github.com/ros-drivers/velodyne/issues/216> from ros-drivers/maint/poll_timeout_handling
+    Testing reporting error instead of stopping node on disconnect.
+  * fixed in range min max, and cleaned up the initialization
+  * Contributors: AndreasR30, Dan Dedrick, Daniel Seifert, Joshua Whitley, Kevin Hallenbeck, Matthew Pitropov, Nils Hauke Bussas, Sebastian, Sebastian Pütz, Shawn Hanna
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Thu, 09 Jul 2020 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.5.2-1buster) buster; urgency=high
+
+  * Merge pull request #212 <https://github.com/ros-drivers/velodyne/issues/212> from ros-drivers/maint/vdump_as_root
+    Modifying vdump script for use as root.
+    Tested by @andersfischernielsen.
+  * Merge pull request #205 <https://github.com/ros-drivers/velodyne/issues/205> from xiesc/master
+    support for 64E-S3
+  * Contributors: Joshua Whitley, Shichao XIE, xiesc
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Mon, 28 Jan 2019 06:00:00 -0000
+
+ros-noetic-velodyne-driver (1.5.1-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Mon, 10 Dec 2018 06:00:00 -0000
+
+ros-noetic-velodyne-driver (1.5.0-1buster) buster; urgency=high
+
+  * Merge pull request #187 <https://github.com/ros-drivers/velodyne/issues/187> from moooeeeep/master
+    Fixed sign error in return value of InputSocket::getPacket()
+  * bugfix: getPacket() function is expected to return negative value on error
+  * Contributors: Fabian Maas, Joshua Whitley
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Fri, 19 Oct 2018 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.4.0-1buster) buster; urgency=high
+
+  * Merge pull request #178 <https://github.com/ros-drivers/velodyne/issues/178> from sts-thm/bugfix_issue_`#174 <https://github.com/ros-drivers/velodyne/issues/174>`_
+    Bugfix issue #174 <https://github.com/ros-drivers/velodyne/issues/174>
+  * Removed debug outputs
+  * Changes fixing deadlock for specific cut_angle values.
+  * Merge pull request #135 <https://github.com/ros-drivers/velodyne/issues/135> from cfneuhaus/bugfix
+    Bugfix: when no device ip is set, we still want to filter by udp port.
+  * Merge pull request #170 <https://github.com/ros-drivers/velodyne/issues/170> from ros-drivers/maint/move_header_files
+    Moving header files to traditional location inside include folders.
+  * Merge pull request #160 <https://github.com/ros-drivers/velodyne/issues/160> from ros-drivers/maint/updating_package_xml_to_v2
+  * Updated all package.xmls to ver 2. Cleaned up catkin_lint errors.
+    All package.xml files are now compatible with version 2 of the
+    package.xml specification in REP 140. Removed some unnecessary
+    execute permissions on a few files. Fixed a missing test_depend.
+  * Merge pull request #151 <https://github.com/ros-drivers/velodyne/issues/151> from Axel13fr/feature/No_Communication_Diag_Update
+  * Fix packet rate for the Velodyne 32C
+  * Conventions: adding name for unused method parameter.
+  * Added a periodic update of the diagnostics so that when no data is received at all from the Velodyne, a diagnostic information will be published. The previous implementation would publish diagnostics only on packet reception.
+  * Merge pull request #139 <https://github.com/ros-drivers/velodyne/issues/139> from ASDeveloper00/vlp32
+    Adding support for VLP-32C.
+  * Merge pull request #138 <https://github.com/ros-drivers/velodyne/issues/138> from volkandre/cut_at_specified_angle_feature
+  * cut_angle parameter is now in rad according to REP 103
+  * Fixed timestamp related bug found by @cfneuhaus, which was described here: https://github.com/ros-drivers/velodyne/pull/126#discussion_r154137793
+  * bugfix: when no device ip is set, we still want to filter by udp port.
+  * Contributors: Andre Volk, CNR, Denis Dillenberger, Frank Neuhaus, Jack O'Quin, Joshua Whitley, Sammy Pfeiffer, Tobias Athmer, axd, kennouni
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Wed, 19 Sep 2018 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.3.0-1buster) buster; urgency=high
+
+  * Merge pull request #129 <https://github.com/ros-drivers/velodyne/issues/129> from kmhallen/pluginlib_macro
+    Modern pluginlib macro
+  * Update to use non deprecated pluginlib macro
+  * add launch args to support multiple devices (#108 <https://github.com/ros-drivers/velodyne/issues/108>)
+  * Merge pull request #101 <https://github.com/ros-drivers/velodyne/issues/101> from teosnare/master
+    velodyne_driver/src/lib/input.cc : fix for device_ip filter
+  * Merge pull request #104 <https://github.com/ros-drivers/velodyne/issues/104> from altrouge/launch_options
+    Add more options in launch files.
+  * Rearranged alphabetically.
+  * Add more options in launch files.
+    - rpm, device_ip, port, read_once, read_fast, repeat_delay
+  * velodyne_driver/src/lib/input.cc : fix for device_ip filter
+    Fix for device_ip filter in InputSocket: initialization of devip_ for correct ip filtering in InputSocket::getPacket.
+  * velodyne_driver: credit @priyankadey for VLP-16 bug fix (#96 <https://github.com/ros-drivers/velodyne/issues/96>)
+  * Merge pull request #96 <https://github.com/ros-drivers/velodyne/issues/96> from priyankadey/master
+    updated VLP-16 packet rate from user manual.
+  * updated VLP-16 packet rate from user manual.
+    Also verified with sensor. It reduced overlap in the pointcloud
+  * update change history
+  * Merge pull request #94 <https://github.com/ros-drivers/velodyne/issues/94> from ros-drivers/pcap_port
+    velodyne_driver: use port number for PCAP data (#46 <https://github.com/ros-drivers/velodyne/issues/46>, #66 <https://github.com/ros-drivers/velodyne/issues/66>)
+  * fix g++ 5.3.1 compile errors (#94 <https://github.com/ros-drivers/velodyne/issues/94>)
+  * merge current master (#94 <https://github.com/ros-drivers/velodyne/issues/94>)
+  * Merge pull request #91 <https://github.com/ros-drivers/velodyne/issues/91> from chukcha2/master
+    update velodyne_driver package description to include all models
+  * update velodyne_driver package description to include all models
+  * Merge pull request #89 <https://github.com/ros-drivers/velodyne/issues/89> from Tones29/feat_dynrec_driver
+    Add dynamic latency configuration to velodyne_driver
+  * velodyne_driver: Add dynamic_reconfigure and time_offset correction
+    The value of time_offset is added to the calculated time stamp in live mode for each packet.
+  * velodyne_driver: Make input destructors virtual
+  * prepare change history for coming Indigo release (#59 <https://github.com/ros-drivers/velodyne/issues/59>)
+  * velodyne_driver: use port number for PCAP data (#66 <https://github.com/ros-drivers/velodyne/issues/66>)
+  * Merge pull request #39 <https://github.com/ros-drivers/velodyne/issues/39> from zooxco/multivelodyne
+    support for multiple velodynes
+  * Merge pull request #44 <https://github.com/ros-drivers/velodyne/issues/44> from SISegwayRmp/master
+    adding driver and pointcloud support for the VLP16
+  * adding the VLP16 test scripts and updating the CMakeLists to include the test file from http://download.ros.org/data/velodyne/vlp16.pcap
+  * adding support for the VLP16
+  * parameters to set the udp port
+  * fixed missing header
+  * cleanup debug line
+  * parameter and code added for working with multiple velodynes
+  * Contributors: Andreas Wachaja, Brice Rebsamen, Daniel Jartoux, Denis Dillenberger, Gabor Meszaros, Ilya, Jack O'Quin, Joshua Whitley, Kevin Hallenbeck, Matteo Murtas, Micho Radovnikovich, Priyanka Dey, William Woodall, jack.oquin, junior, phussey
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Fri, 10 Nov 2017 06:00:00 -0000
+
+ros-noetic-velodyne-driver (1.2.0-1buster) buster; urgency=high
+
+  * Fixed bug in diagnostic rate for driver (#16 <https://github.com/ros-drivers/velodyne/issues/16>)
+  * Contributors: Brice Rebsamen, Jack O'Quin
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Wed, 06 Aug 2014 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.1.2-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 05 Nov 2013 06:00:00 -0000
+
+ros-noetic-velodyne-driver (1.1.1-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 30 Jul 2013 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.1.0-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 16 Jul 2013 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.0.1-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Sat, 15 Jun 2013 05:00:00 -0000
+
+ros-noetic-velodyne-driver (1.0.0-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Fri, 14 Jun 2013 05:00:00 -0000
+
+ros-noetic-velodyne-driver (0.9.2-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Mon, 08 Jul 2013 05:00:00 -0000
+
+ros-noetic-velodyne-driver (0.9.1-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 05 Jun 2012 05:00:00 -0000
+
+ros-noetic-velodyne-driver (0.9.0-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 03 Apr 2012 05:00:00 -0000
+
+ros-noetic-velodyne-driver (0.2.6-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Wed, 23 Feb 2011 06:00:00 -0000
+
+ros-noetic-velodyne-driver (0.2.5-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Fri, 19 Nov 2010 06:00:00 -0000
+
+ros-noetic-velodyne-driver (0.2.0-1buster) buster; urgency=high
+
+
+
+ -- Josh Whitley <josh.whitley@autoware.org>  Tue, 17 Aug 2010 05:00:00 -0000
+
+
