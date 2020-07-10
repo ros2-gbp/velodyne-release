@@ -1,0 +1,12 @@
+Source: ros-foxy-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-foxy-ament-cmake-gtest, ros-foxy-ament-cmake-ros, ros-foxy-ament-lint-auto, ros-foxy-ament-lint-common, ros-foxy-diagnostic-msgs, ros-foxy-diagnostic-updater, ros-foxy-rclcpp, ros-foxy-rclcpp-components, ros-foxy-tf2-ros, ros-foxy-velodyne-msgs, ros-foxy-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-foxy-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-foxy-diagnostic-msgs, ros-foxy-diagnostic-updater, ros-foxy-rclcpp, ros-foxy-rclcpp-components, ros-foxy-tf2-ros, ros-foxy-velodyne-msgs, ros-foxy-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
