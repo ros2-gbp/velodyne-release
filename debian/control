@@ -1,0 +1,12 @@
+Source: ros-eloquent-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcl-dev, libyaml-cpp-dev, ros-eloquent-ament-cmake, ros-eloquent-ament-cmake-gtest, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-angles, ros-eloquent-diagnostic-updater, ros-eloquent-geometry-msgs, ros-eloquent-message-filters, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-sensor-msgs, ros-eloquent-tf2, ros-eloquent-tf2-ros, ros-eloquent-velodyne-msgs, ros-eloquent-ros-workspace
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcl-dev, libyaml-cpp-dev, ros-eloquent-angles, ros-eloquent-diagnostic-updater, ros-eloquent-geometry-msgs, ros-eloquent-message-filters, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-sensor-msgs, ros-eloquent-tf2, ros-eloquent-tf2-ros, ros-eloquent-velodyne-msgs, ros-eloquent-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
