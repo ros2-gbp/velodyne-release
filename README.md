@@ -1,3 +1,31 @@
+## velodyne (foxy) - 2.1.0-1
+
+The packages in the `velodyne` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --track foxy --ros-distro foxy velodyne --edit` on `Fri, 10 Jul 2020 18:02:42 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.1.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.22`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## velodyne (eloquent) - 2.1.0-1
 
 The packages in the `velodyne` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --track eloquent --ros-distro eloquent velodyne --edit` on `Fri, 10 Jul 2020 17:57:10 -0000`
