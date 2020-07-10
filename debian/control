@@ -1,0 +1,12 @@
+Source: ros-eloquent-velodyne
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-velodyne-driver, ros-eloquent-velodyne-laserscan, ros-eloquent-velodyne-msgs, ros-eloquent-velodyne-pointcloud, ros-eloquent-ros-workspace
+Description: Basic ROS support for the Velodyne 3D LIDARs.
