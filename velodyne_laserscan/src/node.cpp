@@ -1,4 +1,4 @@
-// Copyright (C) 2018, 2019 Kevin Hallenbeck, Joshua Whitley
+// Copyright 2018, 2019 Kevin Hallenbeck, Joshua Whitley
 // All rights reserved.
 //
 // Software License Agreement (BSD License 2.0)
@@ -7,15 +7,15 @@
 // modification, are permitted provided that the following conditions
 // are met:
 //
-//  * Redistributions of source code must retain the above copyright
-//    notice, this list of conditions and the following disclaimer.
-//  * Redistributions in binary form must reproduce the above
-//    copyright notice, this list of conditions and the following
-//    disclaimer in the documentation and/or other materials provided
-//    with the distribution.
-//  * Neither the name of {copyright_holder} nor the names of its
-//    contributors may be used to endorse or promote products derived
-//    from this software without specific prior written permission.
+// * Redistributions of source code must retain the above copyright
+//   notice, this list of conditions and the following disclaimer.
+// * Redistributions in binary form must reproduce the above
+//   copyright notice, this list of conditions and the following
+//   disclaimer in the documentation and/or other materials provided
+//   with the distribution.
+// * Neither the name of {copyright_holder} nor the names of its
+//   contributors may be used to endorse or promote products derived
+//   from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -30,20 +30,22 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#include <ros/ros.h>
-#include "velodyne_laserscan/velodyne_laserscan.h"
+#include <rclcpp/rclcpp.hpp>
 
-int main(int argc, char** argv)
+#include <memory>
+
+#include "velodyne_laserscan/velodyne_laserscan.hpp"
+
+int main(int argc, char ** argv)
 {
-  ros::init(argc, argv, "velodyne_laserscan_node");
-  ros::NodeHandle nh;
-  ros::NodeHandle nh_priv("~");
-
-  // create VelodyneLaserScan class
-  velodyne_laserscan::VelodyneLaserScan n(nh, nh_priv);
+  rclcpp::init(argc, argv);
 
   // handle callbacks until shut down
-  ros::spin();
+  rclcpp::spin(
+    std::make_shared<velodyne_laserscan::VelodyneLaserScan>(
+      rclcpp::NodeOptions()));
+
+  rclcpp::shutdown();
 
   return 0;
 }

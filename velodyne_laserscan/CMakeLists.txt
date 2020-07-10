@@ -1,66 +1,62 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(velodyne_laserscan)
 
-# Set minimum C++ standard to C++11
-if (NOT "${CMAKE_CXX_STANDARD_COMPUTED_DEFAULT}")
-  message(STATUS "Changing CXX_STANDARD from C++98 to C++11")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-elseif ("${CMAKE_CXX_STANDARD_COMPUTED_DEFAULT}" STREQUAL "98")
-  message(STATUS "Changing CXX_STANDARD from C++98 to C++11")
-  set(CMAKE_CXX_STANDARD 11)
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  nodelet
-  sensor_msgs
-  dynamic_reconfigure
-  roslint
-)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-generate_dynamic_reconfigure_options(
-  cfg/VelodyneLaserScan.cfg
-)
+find_package(ament_cmake_ros REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_components REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
-catkin_package(CATKIN_DEPENDS
-  sensor_msgs
-)
+include_directories(include)
 
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-)
-
-add_library(${PROJECT_NAME}
+add_library(${PROJECT_NAME} SHARED
   src/velodyne_laserscan.cpp
-  src/nodelet.cpp
 )
-add_dependencies(${PROJECT_NAME}
-  ${PROJECT_NAME}_gencfg
+ament_target_dependencies(${PROJECT_NAME}
+  rclcpp
+  rclcpp_components
+  sensor_msgs
 )
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+
+rclcpp_components_register_nodes(${PROJECT_NAME}
+  "velodyne_laserscan::VelodyneLaserScan")
 
 add_executable(${PROJECT_NAME}_node
   src/node.cpp
 )
-target_link_libraries(${PROJECT_NAME}_node
-  ${catkin_LIBRARIES}
-  ${PROJECT_NAME}
+ament_target_dependencies(${PROJECT_NAME}_node
+  rclcpp
+)
+target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
-install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
-        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
-install(FILES nodelets.xml
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+install(TARGETS ${PROJECT_NAME}_node
+  DESTINATION lib/${PROJECT_NAME}
 )
 
-roslint_cpp()
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME})
 
-if (CATKIN_ENABLE_TESTING)
-  add_subdirectory(tests)
+install(DIRECTORY config launch
+  DESTINATION share/${PROJECT_NAME})
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+#   add_subdirectory(tests)
 endif()
 
+ament_package()
