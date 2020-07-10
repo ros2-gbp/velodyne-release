@@ -1,0 +1,12 @@
+Source: ros-dashing-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-dashing-ament-cmake-gtest, ros-dashing-ament-cmake-ros, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-diagnostic-msgs, ros-dashing-diagnostic-updater, ros-dashing-rclcpp, ros-dashing-rclcpp-components, ros-dashing-tf2-ros, ros-dashing-velodyne-msgs, ros-dashing-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-dashing-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-dashing-diagnostic-msgs, ros-dashing-diagnostic-updater, ros-dashing-rclcpp, ros-dashing-rclcpp-components, ros-dashing-tf2-ros, ros-dashing-velodyne-msgs, ros-dashing-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
