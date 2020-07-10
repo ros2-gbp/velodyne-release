@@ -1,6 +1,11 @@
 Change history
 ==============
 
+2.1.0 (2020-07-10)
+------------------
+* Fixing Foxy-specific uncrustify errors.
+* Contributors: Joshua Whitley
+
 2.0.0 (2020-07-10)
 ------------------
 * Fix dependencies in package.xml (`#331 <https://github.com/ros-drivers/velodyne/issues/331>`_)

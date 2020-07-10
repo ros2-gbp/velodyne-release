@@ -1,6 +1,9 @@
 Change history
 ==============
 
+2.1.0 (2020-07-10)
+------------------
+
 2.0.0 (2020-07-10)
 ------------------
 * Adding linters to velodyne_msgs. (`#302 <https://github.com/ros-drivers/velodyne/issues/302>`_)
