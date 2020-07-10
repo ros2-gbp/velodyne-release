@@ -1,0 +1,12 @@
+Source: ros-dashing-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcl-dev, libyaml-cpp-dev, ros-dashing-ament-cmake, ros-dashing-ament-cmake-gtest, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-angles, ros-dashing-diagnostic-updater, ros-dashing-geometry-msgs, ros-dashing-message-filters, ros-dashing-rclcpp, ros-dashing-rclcpp-components, ros-dashing-sensor-msgs, ros-dashing-tf2, ros-dashing-tf2-ros, ros-dashing-velodyne-msgs, ros-dashing-ros-workspace
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-dashing-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcl-dev, libyaml-cpp-dev, ros-dashing-angles, ros-dashing-diagnostic-updater, ros-dashing-geometry-msgs, ros-dashing-message-filters, ros-dashing-rclcpp, ros-dashing-rclcpp-components, ros-dashing-sensor-msgs, ros-dashing-tf2, ros-dashing-tf2-ros, ros-dashing-velodyne-msgs, ros-dashing-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
