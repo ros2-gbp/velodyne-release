@@ -1,0 +1,12 @@
+Source: ros-dashing-velodyne-msgs
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), ros-dashing-ament-cmake, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-builtin-interfaces, ros-dashing-rosidl-default-generators, ros-dashing-std-msgs, ros-dashing-ros-workspace, ros-dashing-rosidl-typesupport-connext-c, ros-dashing-rosidl-typesupport-connext-cpp, ros-dashing-rosidl-typesupport-fastrtps-c, ros-dashing-rosidl-typesupport-fastrtps-cpp, ros-dashing-rmw-connext-cpp, ros-dashing-rmw-fastrtps-cpp, ros-dashing-rmw-implementation, ros-dashing-rmw-opensplice-cpp, ros-dashing-rosidl-typesupport-opensplice-c, ros-dashing-rosidl-typesupport-opensplice-cpp
+Homepage: http://ros.org/wiki/velodyne_msgs
+Standards-Version: 3.9.2
+
+Package: ros-dashing-velodyne-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-dashing-builtin-interfaces, ros-dashing-rosidl-default-runtime, ros-dashing-std-msgs, ros-dashing-ros-workspace
+Description: ROS message definitions for Velodyne 3D LIDARs.
