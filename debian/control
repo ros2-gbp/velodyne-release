@@ -1,0 +1,12 @@
+Source: ros-eloquent-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-eloquent-ament-cmake-gtest, ros-eloquent-ament-cmake-ros, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-diagnostic-msgs, ros-eloquent-diagnostic-updater, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-tf2-ros, ros-eloquent-velodyne-msgs, ros-eloquent-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-eloquent-diagnostic-msgs, ros-eloquent-diagnostic-updater, ros-eloquent-rclcpp, ros-eloquent-rclcpp-components, ros-eloquent-tf2-ros, ros-eloquent-velodyne-msgs, ros-eloquent-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
