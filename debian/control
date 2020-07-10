@@ -1,0 +1,12 @@
+Source: ros-foxy-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcl-dev, libyaml-cpp-dev, ros-foxy-ament-cmake, ros-foxy-ament-cmake-gtest, ros-foxy-ament-lint-auto, ros-foxy-ament-lint-common, ros-foxy-angles, ros-foxy-diagnostic-updater, ros-foxy-geometry-msgs, ros-foxy-message-filters, ros-foxy-rclcpp, ros-foxy-rclcpp-components, ros-foxy-sensor-msgs, ros-foxy-tf2, ros-foxy-tf2-ros, ros-foxy-velodyne-msgs, ros-foxy-ros-workspace
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-foxy-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcl-dev, libyaml-cpp-dev, ros-foxy-angles, ros-foxy-diagnostic-updater, ros-foxy-geometry-msgs, ros-foxy-message-filters, ros-foxy-rclcpp, ros-foxy-rclcpp-components, ros-foxy-sensor-msgs, ros-foxy-tf2, ros-foxy-tf2-ros, ros-foxy-velodyne-msgs, ros-foxy-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
