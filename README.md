@@ -1,3 +1,31 @@
+## velodyne (dashing) - 2.0.0-1
+
+The packages in the `velodyne` repository were released into the `dashing` distro by running `/usr/bin/bloom-release --track dashing --ros-distro dashing velodyne --edit` on `Fri, 10 Jul 2020 17:27:13 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.0.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.22`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## velodyne (noetic) - 1.6.0-1
 
 The packages in the `velodyne` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --track noetic --ros-distro noetic velodyne` on `Thu, 09 Jul 2020 16:52:22 -0000`
