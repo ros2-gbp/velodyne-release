@@ -1,0 +1,12 @@
+Source: ros-noetic-velodyne
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <josh.whitley@autoware.org>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-noetic-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-velodyne-driver, ros-noetic-velodyne-laserscan, ros-noetic-velodyne-msgs, ros-noetic-velodyne-pointcloud
+Description: Basic ROS support for the Velodyne 3D LIDARs.
