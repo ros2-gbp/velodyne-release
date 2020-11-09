@@ -1,21 +1,32 @@
-[![](https://github.com/ros-drivers/velodyne/workflows/Basic%20Build%20Workflow/badge.svg)](https://github.com/ros-drivers/velodyne/actions)
+## PointCloud2 to PCL PointCloud Conversion
 
-Overview
-========
+Convert `sensor_msgs::PointCloud2` objects coming from the velodyne_pointcloud driver to `pcl::PointCloud<velodyne_pcl::PointXYZIRT>` objects.
 
-Velodyne<sup>1</sup> is a collection of ROS<sup>2</sup> packages supporting `Velodyne high
-definition 3D LIDARs`<sup>3</sup>.
+The `sensor_msgs::PointCloud2` ROS message is constructed by using the `PointcloudXYZIRT`, or the `OrganizedCloudXYZIRT` container.
+Both define the following channels:
 
-**Warning**:
+* x - The x coord in Cartesian coordinates
+* y - The y coord in Cartesian coordinates
+* z - The z coord in Cartesian coordinates
+* intensity - The measured intensity at the point
+* ring - The ring number of the laser
+* time - The time stamp of the measured point
 
-  The master branch normally contains code being tested for the next
-  ROS release.  It will not always work with every previous release.
-  To check out the source for the most recent release, check out the
-  tag `<version>` with the highest version number.
+To convert a `sensor_msgs::PointCloud2` published by the velodyne driver to PCL you could use the following code:
 
-The current ``master`` branch works with ROS Kinetic and Melodic.
-CI builds are currently run for Kinetic and Melodic.
+```
+#include <pcl_conversions/pcl_conversions.h>
+#include <velodyne_pcl/point_types.h>
+#include <pcl/PCLPointCloud2.h>
+#include <pcl/conversions.h>
 
-- <sup>1</sup>Velodyne: http://www.ros.org/wiki/velodyne
-- <sup>2</sup>ROS: http://www.ros.org
-- <sup>3</sup>`Velodyne high definition 3D LIDARs`: http://www.velodynelidar.com/lidar/lidar.aspx
+void cloud_callback(const boost::shared_ptr<const sensor_msgs::PointCloud2>& cloud){
+
+  pcl::PCLPointCloud2 pcl_pointcloud2;
+  pcl_conversions::toPCL(*cloud, pcl_pointcloud2);
+  pcl::PointCloud<velodyne_pcl::PointXYZIRT>::Ptr pcl_cloud_ptr(new pcl::PointCloud<velodyne_pcl::PointXYZIRT>);
+  pcl::fromPCLPointCloud2(pcl_pointcloud2, *pcl_cloud_ptr);
+
+  // use pcl_cloud_ptr
+}
+```
