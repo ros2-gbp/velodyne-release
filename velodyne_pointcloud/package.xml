@@ -1,41 +1,45 @@
 <?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<package format="3">
+<package format="2">
   <name>velodyne_pointcloud</name>
-  <version>2.1.0</version>
+  <version>1.6.1</version>
   <description>
     Point cloud conversions for Velodyne 3D LIDARs.
   </description>
-  <maintainer email="jwhitley@autonomoustuff.com">Josh Whitley</maintainer>
+  <maintainer email="josh.whitley@autoware.org">Josh Whitley</maintainer>
+  <author>Jack O'Quin</author>
+  <author>Piyush Khandelwal</author>
+  <author>Jesse Vera</author>
+  <author>Sebastian Pütz</author>
   <license>BSD</license>
   <url type="website">http://ros.org/wiki/velodyne_pointcloud</url>
   <url type="repository">https://github.com/ros-drivers/velodyne</url>
   <url type="bugtracker">https://github.com/ros-drivers/velodyne/issues</url>
-  <author>Jack O'Quin</author>
-  <author>Piyush Khandelwal</author>
-  <author>Jesse Vera</author>
-  <author>Andreas Klintberg</author>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslint</build_depend>
 
   <depend>angles</depend>
-  <depend>diagnostic_updater</depend>
-  <depend>geometry_msgs</depend>
-  <depend>libpcl-all-dev</depend>
-  <depend>message_filters</depend>
-  <depend>rclcpp</depend>
-  <depend>rclcpp_components</depend>
+  <depend>nodelet</depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
   <depend>sensor_msgs</depend>
-  <depend>tf2</depend>
   <depend>tf2_ros</depend>
+  <depend>velodyne_driver</depend>
   <depend>velodyne_msgs</depend>
   <depend>yaml-cpp</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>eigen</depend>
 
-  <test_depend>ament_cmake_gtest</test_depend>
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <exec_depend>velodyne_laserscan</exec_depend>
+
+  <test_depend>rosunit</test_depend>
+  <test_depend>roslaunch</test_depend>
+  <test_depend>rostest</test_depend>
+  <test_depend>tf2_ros</test_depend>
 
   <export>
-    <build_type>ament_cmake</build_type>
+    <nodelet plugin="${prefix}/nodelets.xml"/>
   </export>
 </package>

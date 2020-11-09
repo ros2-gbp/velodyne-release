@@ -3,35 +3,30 @@
 
 \htmlinclude manifest.html
 
-ROS 2 device driver for Velodyne 3D LIDARs.
+ROS device driver for Velodyne 3D LIDARs. 
 
 \section read Velodyne device driver
 
-ROS 2 device driver node that captures Velodyne 3D LIDAR data and
+ROS device driver node that captures Velodyne 3D LIDAR data and
 publishes it to the \b velodyne_msgs/VelodyneScan topic.
 
 \subsection read_examples Examples
 
 Read the Velodyne input socket as fast as possible.  Publish each
-complete revolution to \b /velodyne_packets
+complete revolution to \b velodyne/rawscan.
 
 \verbatim
-$ ros2 run velodyne_driver velodyne_node
+$ rosrun velodyne_driver velodyne_node
 \endverbatim
 
 Read previously captured Velodyne packets from dump.pcap file.
-Publish messages to \b /velodyne_packets at approximately 10 Hz rate.
+Publish messages to \b velodyne/rawscan at approximately 10 Hz rate.
 
 Dump files can be grabbed by libpcap, Velodyne's DSR software,
 ethereal, wireshark, tcpdump, or the velodyne_driver vdump command.
 
 \verbatim
-cat << EOF > pcap.yaml
-velodyne_driver_node:
-    ros__parameters:
-        pcap: pcap-000
-EOF
-$ ros2 run velodyne_driver velodyne_node __params:=pcap.yaml
+$ rosrun velodyne_driver velodyne_node _pcap:=dump.pcap
 \endverbatim
 
 \subsection read_names ROS names
@@ -43,12 +38,12 @@ entire revolution of the device.
 
 Parameters:
 
- - \b pcap (string): PCAP dump input file name (default: use real device)
- - \b read_once (bool): if true, read input file only once
+ - \b ~pcap (string): PCAP dump input file name (default: use real device)
+ - \b ~input/read_once (bool): if true, read input file only once
    (default false).
- - \b read_fast (bool): if true, read input file as fast as
+ - \b ~input/read_fast (bool): if true, read input file as fast as
    possible (default false).
- - \b repeat_delay (double): number of seconds to delay before
+ - \b ~input/repeat_delay (double): number of seconds to delay before
    repeating input file (default: 0.0).
 
 \section vdump_command Vdump Command
@@ -63,10 +58,10 @@ wireshark, Velodyne's DSR software, and programming with libpcap.
 \subsection vdump_usage Usage
 
 \verbatim
-  ros2 run velodyne_driver vdump <file_prefix> [ <interface> ]
+  rosrun velodyne_driver vdump <file_prefix> [ <interface> ]
 
         <file_prefix>   file name to dump (with 3-digit number suffix)
-        <interface>     interface to read from (default: "eth0")
+        <interface>     interface to read from (default: "eth1")
 \endverbatim
 
 \subsection vdump_examples Examples
@@ -76,7 +71,7 @@ Dump Velodyne packets to a series of files named "pcap-000",
 than 30 seconds of Velodyne packets.  Type ^C when finished.
 
 \verbatim
-$ ros2 run velodyne_driver vdump pcap- eth0
+$ rosrun velodyne_driver vdump pcap- eth0
 \endverbatim
 
 */

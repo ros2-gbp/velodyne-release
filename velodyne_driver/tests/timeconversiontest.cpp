@@ -1,4 +1,4 @@
-// Copyright 2019 Matthew Pitropov, Joshua Whitley
+// Copyright (C) 2019 Matthew Pitropov, Joshua Whitley
 // All rights reserved.
 //
 // Software License Agreement (BSD License 2.0)
@@ -30,25 +30,18 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#include <gtest/gtest.h>
-#include <rclcpp/rclcpp.hpp>
-
-#include <cmath>
-#include <memory>
-
 #include "velodyne_driver/time_conversion.hpp"
+#include <ros/time.h>
+#include <gtest/gtest.h>
 
 TEST(TimeConversion, BytesToTimestamp)
 {
-  auto clock_ = std::make_shared<rclcpp::Clock>();
-  auto ros_stamp = clock_->now();
+  ros::Time::init();
+  ros::Time ros_stamp = ros::Time::now();
 
-  double secs;
-  double fractpart = std::modf(ros_stamp.seconds(), &secs);
-  double nanosecs = fractpart * 1000000000;
   // get the seconds past the hour and multiply by 1million to convert to microseconds
   // divide nanoseconds by 1000 to convert to microseconds
-  uint32_t since_the_hour = ((static_cast<int>(secs) % 3600) * 1000000) + (nanosecs / 1000);
+  uint32_t since_the_hour = ((ros_stamp.sec % 3600) * 1000000) + ros_stamp.nsec / 1000;
 
   uint8_t native_format[4];
   native_format[0] = 0xFF & since_the_hour;
@@ -56,12 +49,13 @@ TEST(TimeConversion, BytesToTimestamp)
   native_format[2] = 0xFF & (((uint32_t)since_the_hour) >> 16);
   native_format[3] = 0xFF & (((uint32_t)since_the_hour) >> 24);
 
-  rclcpp::Time ros_stamp_converted = rosTimeFromGpsTimestamp(ros_stamp, native_format);
+  ros::Time ros_stamp_converted = rosTimeFromGpsTimestamp(native_format);
 
-  ASSERT_NEAR(ros_stamp_converted.nanoseconds(), ros_stamp.nanoseconds(), 2000);
+  ASSERT_EQ(ros_stamp_converted.sec, ros_stamp.sec);
+  ASSERT_NEAR(ros_stamp_converted.nsec, ros_stamp.nsec, 1000);
 }
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
   int ret = RUN_ALL_TESTS();
