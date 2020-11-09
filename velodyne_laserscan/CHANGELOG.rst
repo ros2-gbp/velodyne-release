@@ -2,6 +2,9 @@
 Changelog for package velodyne_laserscan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.6.1 (2020-11-09)
+------------------
+
 1.6.0 (2020-07-09)
 ------------------
 * Updating maintainer email address.
