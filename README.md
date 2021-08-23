@@ -1,3 +1,31 @@
+## velodyne (galactic) - 2.1.1-1
+
+The packages in the `velodyne` repository were released into the `galactic` distro by running `/usr/bin/bloom-release --rosdistro galactic --track galactic velodyne` on `Mon, 23 Aug 2021 18:32:01 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.1.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## velodyne (noetic) - 1.6.1-1
 
 The packages in the `velodyne` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --track noetic --rosdistro noetic velodyne` on `Mon, 09 Nov 2020 23:58:19 -0000`
