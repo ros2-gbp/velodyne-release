@@ -5,34 +5,29 @@ on:
   - push
 
 jobs:
-  build-noetic:
-    runs-on: ubuntu-latest
+  build-foxy:
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
     container:
-      image: ros:noetic-perception
+      image: rostooling/setup-ros-docker:ubuntu-focal-ros-foxy-ros-base-testing-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-    - name: Create Workspace
+    - name: Fix Bugs in ros-tooling/action-ros-ci
       run: |
-        mkdir src_tmp
-        mv `find -maxdepth 1 -not -name . -not -name src_tmp` src_tmp/
-        mv src_tmp/ src/
-        cd src
-        bash -c 'source /opt/ros/$ROS_DISTRO/setup.bash; \
-        catkin_init_workspace'
-    - name: Install Prerequisites
-      run: |
-        bash -c 'source /opt/ros/$ROS_DISTRO/setup.bash; \
-        apt-get update && rosdep update; \
-        rosdep install --from-paths src --ignore-src -y'
-    - name: Build Workspace
-      run: |
-        bash -c 'source /opt/ros/$ROS_DISTRO/setup.bash; \
-        catkin_make'
+        sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
     - name: Run Tests
-      run: |
-        bash -c 'source /opt/ros/$ROS_DISTRO/setup.bash; \
-        catkin_make run_tests; \
-        catkin_test_results --verbose'
+      uses: ros-tooling/action-ros-ci@0.2.0
+      with:
+        package-name: |
+          velodyne
+          velodyne_driver
+          velodyne_laserscan
+          velodyne_msgs
+          velodyne_pointcloud
+        target-ros2-distro: foxy
+    - name: Upload logs
+      uses: actions/upload-artifact@v1
+      with:
+        name: colcon-logs
+        path: ros_ws/log
+      if: always()

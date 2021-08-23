@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(velodyne)
-find_package(catkin REQUIRED)
-catkin_metapackage()
+find_package(ament_cmake REQUIRED)
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME})
+
+ament_package()
