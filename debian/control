@@ -1,0 +1,12 @@
+Source: ros-foxy-velodyne
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), ros-foxy-ament-cmake, ros-foxy-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-foxy-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-foxy-velodyne-driver, ros-foxy-velodyne-laserscan, ros-foxy-velodyne-msgs, ros-foxy-velodyne-pointcloud, ros-foxy-ros-workspace
+Description: Basic ROS support for the Velodyne 3D LIDARs.
