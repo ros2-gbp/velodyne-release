@@ -10,13 +10,13 @@ jobs:
     strategy:
       fail-fast: false
     container:
-      image: rostooling/setup-ros-docker:ubuntu-focal-ros-foxy-ros-base-testing-latest
+      image: rostooling/setup-ros-docker:ubuntu-focal-ros-foxy-ros-base-latest
     steps:
     - name: Fix Bugs in ros-tooling/action-ros-ci
       run: |
         sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
     - name: Run Tests
-      uses: ros-tooling/action-ros-ci@0.2.0
+      uses: ros-tooling/action-ros-ci@0.2.2
       with:
         package-name: |
           velodyne
