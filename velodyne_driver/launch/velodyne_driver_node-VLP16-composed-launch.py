@@ -51,15 +51,15 @@ def generate_launch_description():
     with open(param_config, 'r') as f:
         params = yaml.safe_load(f)['velodyne_driver_node']['ros__parameters']
     container = ComposableNodeContainer(
-            name='velodyne_driver_container',
-            namespace='',
+            node_name='velodyne_driver_container',
+            node_namespace='',
             package='rclcpp_components',
-            executable='component_container',
+            node_executable='component_container',
             composable_node_descriptions=[
                 ComposableNode(
                     package='velodyne_driver',
-                    plugin='velodyne_driver::VelodyneDriver',
-                    name='velodyne_driver_node',
+                    node_plugin='velodyne_driver::VelodyneDriver',
+                    node_name='velodyne_driver_node',
                     parameters=[params]),
             ],
             output='both',

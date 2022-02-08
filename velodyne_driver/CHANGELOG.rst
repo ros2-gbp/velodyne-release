@@ -1,10 +1,21 @@
 Change history
 ==============
 
-2.1.1 (2022-02-07)
+2.2.0 (2022-02-07)
 ------------------
-* Replace deprecated argument names in launch (`#435 <https://github.com/ros-drivers/velodyne/issues/435>`_)
-  Co-authored-by: Keane Quigley <keaneq@protonmail.com>
+* Updating for first Galactic release
+* Minor fixes to string formatting. (`#396 <https://github.com/ros-drivers/velodyne/issues/396>`_)
+  These changes will allow velodyne to compile without warnings
+  on Rolling (soon to be Galactic).  The changes are also backwards
+  compatible to Foxy if we want to backport them.
+* Contributors: Chris Lalancette, Joshua Whitley
+
+2.1.1 (2021-08-23)
+------------------
+* Minor fixes to string formatting. (`#396 <https://github.com/ros-drivers/velodyne/issues/396>`_)
+  These changes will allow velodyne to compile without warnings
+  on Rolling (soon to be Galactic).  The changes are also backwards
+  compatible to Foxy if we want to backport them.
 * Contributors: Chris Lalancette
 
 2.1.0 (2020-07-10)

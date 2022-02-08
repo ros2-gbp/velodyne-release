@@ -2,11 +2,13 @@
 Changelog for package velodyne_laserscan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.1 (2022-02-07)
+2.2.0 (2022-02-07)
 ------------------
-* Replace deprecated argument names in launch (`#435 <https://github.com/ros-drivers/velodyne/issues/435>`_)
-  Co-authored-by: Keane Quigley <keaneq@protonmail.com>
-* Contributors: Chris Lalancette
+* Updating for first Galactic release
+* Contributors: Joshua Whitley
+
+2.1.1 (2021-08-23)
+------------------
 
 2.1.0 (2020-07-10)
 ------------------

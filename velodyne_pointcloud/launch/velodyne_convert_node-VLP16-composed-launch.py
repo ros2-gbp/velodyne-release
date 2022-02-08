@@ -50,15 +50,15 @@ def generate_launch_description():
         params = yaml.safe_load(f)['velodyne_convert_node']['ros__parameters']
     params['calibration'] = os.path.join(share_dir, 'params', 'VLP16db.yaml')
     container = ComposableNodeContainer(
-            name='velodyne_pointcloud_convert_container',
-            namespace='',
+            node_name='velodyne_pointcloud_convert_container',
+            node_namespace='',
             package='rclcpp_components',
-            executable='component_container',
+            node_executable='component_container',
             composable_node_descriptions=[
                 ComposableNode(
                     package='velodyne_pointcloud',
-                    plugin='velodyne_pointcloud::Convert',
-                    name='velodyne_convert_node',
+                    node_plugin='velodyne_pointcloud::Convert',
+                    node_name='velodyne_convert_node',
                     parameters=[params]),
             ],
             output='both',
