@@ -1,20 +1,17 @@
-[![CircleCI](https://circleci.com/gh/ros-drivers/velodyne/tree/dashing-devel.svg?style=svg)](https://circleci.com/gh/ros-drivers/velodyne/tree/dashing-devel)
+Velodyne ROS 2 pointcloud to laserscan converter
+================================================
 
-Overview
-========
+This is a ROS 2 package that takes pointcloud data as output by one of the velodyne_pointcloud nodes and converts it to a single laserscan.
 
-Velodyne<sup>1</sup> is a collection of ROS<sup>2</sup> packages supporting `Velodyne high
-definition 3D LIDARs`<sup>3</sup>.
+Published Topics
+----------------
+* `scan` (`sensor_msgs/LaserScan`) - The laserscan that results from taking one line of the pointcloud.
 
-**Warning**:
+Subscribed Topics
+-----------------
+* `velodyne_points` (`sensor_msgs/PointCloud2`) - The pointcloud that results from the raw velodyne data.
 
-  The `<ros_distro>-devel` branch normally contains code being tested for the next
-  ROS release.  It will not always work with every previous release.
-  To check out the source for the most recent release, check out the
-  tag `ros2-<version>` with the highest version number.
-
-The current ``dashing-devel`` branch works with ROS Dashing.
-
-- <sup>1</sup>Velodyne: http://www.ros.org/wiki/velodyne
-- <sup>2</sup>ROS: http://www.ros.org
-- <sup>3</sup>`Velodyne high definition 3D LIDARs`: http://www.velodynelidar.com/lidar/lidar.aspx
+Parameters
+----------
+* `ring` (int) - The "ring" of the Velodyne to use for the single line.  If less than 0, a default ring per device will be used.  Defaults to -1.
+* `resolution` (double) - The resolution in meters that each point provides.  Defaults to 0.007.
