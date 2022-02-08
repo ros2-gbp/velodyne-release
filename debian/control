@@ -1,0 +1,12 @@
+Source: ros-galactic-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <jwhitley@autonomoustuff.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-galactic-ament-cmake-gtest, ros-galactic-ament-cmake-ros, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-diagnostic-msgs, ros-galactic-diagnostic-updater, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-tf2-ros, ros-galactic-velodyne-msgs, ros-galactic-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-galactic-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-galactic-diagnostic-msgs, ros-galactic-diagnostic-updater, ros-galactic-rclcpp, ros-galactic-rclcpp-components, ros-galactic-tf2-ros, ros-galactic-velodyne-msgs, ros-galactic-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
