@@ -1,3 +1,31 @@
+## velodyne (rolling) - 2.3.0-1
+
+The packages in the `velodyne` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --ros-distro rolling --track rolling --override-release-repository-url https://github.com/ros2-gbp/velodyne-release.git --override-release-repository-push-url git@github.com:ros2-gbp/velodyne-release.git velodyne --edit` on `Fri, 08 Jul 2022 17:52:24 -0000`
+
+These packages were released:
+- `velodyne`
+- `velodyne_driver`
+- `velodyne_laserscan`
+- `velodyne_msgs`
+- `velodyne_pointcloud`
+
+Version of package(s) in repository `velodyne`:
+
+- upstream repository: https://github.com/ros-drivers/velodyne.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.3.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.1`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.1`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## velodyne (humble) - 2.3.0-1
 
 The packages in the `velodyne` repository were released into the `humble` distro by running `/usr/bin/bloom-release --ros-distro humble --track humble --override-release-repository-url https://github.com/ros2-gbp/velodyne-release.git --override-release-repository-push-url git@github.com:ros2-gbp/velodyne-release.git velodyne --edit` on `Fri, 08 Jul 2022 17:47:01 -0000`
