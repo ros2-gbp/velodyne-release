@@ -127,14 +127,11 @@ public:
     cloud.data.resize(scan_msg->packets.size() * config_.scans_per_packet * cloud.point_step);
     // Clear out the last data; this is important in the organized cloud case
     std::fill(cloud.data.begin(), cloud.data.end(), 0);
-    if (config_.transform) {
-      computeTransformation(scan_msg->header.stamp);
-    }
   }
 
   virtual void addPoint(
     float x, float y, float z, const uint16_t ring, const float distance,
-    const float intensity) = 0;
+    const float intensity, const float time) = 0;
   virtual void newLine() = 0;
 
   const sensor_msgs::msg::PointCloud2 & finishCloud()
@@ -159,16 +156,6 @@ public:
     config_.target_frame = target_frame;
 
     config_.transform = fixed_frame != target_frame;
-  }
-
-protected:
-  sensor_msgs::msg::PointCloud2 cloud;
-
-  inline void vectorTfToEigen(tf2::Vector3 & tf_vec, Eigen::Vector3f & eigen_vec)
-  {
-    eigen_vec(0) = tf_vec[0];
-    eigen_vec(1) = tf_vec[1];
-    eigen_vec(2) = tf_vec[2];
   }
 
   void computeTransformation(const rclcpp::Time & time)
@@ -199,6 +186,16 @@ protected:
     vectorTfToEigen(origin, eigen_origin);
     Eigen::Translation3f translation(eigen_origin);
     transformation = translation * rotation;
+  }
+
+protected:
+  sensor_msgs::msg::PointCloud2 cloud;
+
+  inline void vectorTfToEigen(tf2::Vector3 & tf_vec, Eigen::Vector3f & eigen_vec)
+  {
+    eigen_vec(0) = tf_vec[0];
+    eigen_vec(1) = tf_vec[1];
+    eigen_vec(2) = tf_vec[2];
   }
 
   inline void transformPoint(float & x, float & y, float & z)
