@@ -43,8 +43,8 @@
 #include <memory>
 #include <string>
 
-#include "velodyne_pointcloud/organized_cloudXYZIR.hpp"
-#include "velodyne_pointcloud/pointcloudXYZIR.hpp"
+#include "velodyne_pointcloud/organized_cloudXYZIRT.hpp"
+#include "velodyne_pointcloud/pointcloudXYZIRT.hpp"
 #include "velodyne_pointcloud/rawdata.hpp"
 
 namespace velodyne_pointcloud
@@ -58,6 +58,7 @@ Convert::Convert(const rclcpp::NodeOptions & options)
 {
   // get path to angles.config file for this device
   std::string calibration_file = this->declare_parameter("calibration", "");
+  const auto model = this->declare_parameter("model", "64E");
 
   rcl_interfaces::msg::ParameterDescriptor min_range_desc;
   min_range_desc.name = "min_range";
@@ -99,21 +100,21 @@ Convert::Convert(const rclcpp::NodeOptions & options)
   view_width_desc.floating_point_range.push_back(view_width_range);
   double view_width = this->declare_parameter("view_width", 2.0 * M_PI, view_width_desc);
 
-  bool organize_cloud = this->declare_parameter("organize_cloud", true);
+  bool organize_cloud = this->declare_parameter("organize_cloud", false);
 
-  std::string target_frame = this->declare_parameter("target_frame", "");
-  std::string fixed_frame = this->declare_parameter("fixed_frame", "");
+  std::string target_frame = this->declare_parameter("target_frame", "velodyne");
+  std::string fixed_frame = this->declare_parameter("fixed_frame", "velodyne");
 
   RCLCPP_INFO(this->get_logger(), "correction angles: %s", calibration_file.c_str());
 
-  data_ = std::make_unique<velodyne_rawdata::RawData>(calibration_file);
+  data_ = std::make_unique<velodyne_rawdata::RawData>(calibration_file, model);
 
   if (organize_cloud) {
-    container_ptr_ = std::make_unique<OrganizedCloudXYZIR>(
+    container_ptr_ = std::make_unique<OrganizedCloudXYZIRT>(
       min_range, max_range, target_frame, fixed_frame,
       data_->numLasers(), data_->scansPerPacket(), tf_buffer_);
   } else {
-    container_ptr_ = std::make_unique<PointcloudXYZIR>(
+    container_ptr_ = std::make_unique<PointcloudXYZIRT>(
       min_range, max_range, target_frame, fixed_frame,
       data_->scansPerPacket(), tf_buffer_);
   }
@@ -158,7 +159,7 @@ void Convert::processScan(const velodyne_msgs::msg::VelodyneScan::SharedPtr scan
 
   // process each packet provided by the driver
   for (size_t i = 0; i < scanMsg->packets.size(); ++i) {
-    data_->unpack(scanMsg->packets[i], *container_ptr_);
+    data_->unpack(scanMsg->packets[i], *container_ptr_, scanMsg->header.stamp);
   }
 
   // publish the accumulated cloud message
