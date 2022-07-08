@@ -1,0 +1,12 @@
+Source: ros-rolling-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libpcl-dev, libyaml-cpp-dev, ros-rolling-ament-cmake, ros-rolling-ament-cmake-gtest <!nocheck>, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-angles, ros-rolling-diagnostic-updater, ros-rolling-geometry-msgs, ros-rolling-message-filters, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-sensor-msgs, ros-rolling-tf2, ros-rolling-tf2-ros, ros-rolling-velodyne-msgs, ros-rolling-ros-workspace
+Homepage: http://ros.org/wiki/velodyne_pointcloud
+Standards-Version: 3.9.2
+
+Package: ros-rolling-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcl-dev, libyaml-cpp-dev, ros-rolling-angles, ros-rolling-diagnostic-updater, ros-rolling-geometry-msgs, ros-rolling-message-filters, ros-rolling-rclcpp, ros-rolling-rclcpp-components, ros-rolling-sensor-msgs, ros-rolling-tf2, ros-rolling-tf2-ros, ros-rolling-velodyne-msgs, ros-rolling-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
