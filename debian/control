@@ -1,0 +1,12 @@
+Source: ros-galactic-velodyne-msgs
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-lint-auto <!nocheck>, ros-galactic-ament-lint-common <!nocheck>, ros-galactic-builtin-interfaces, ros-galactic-rosidl-default-generators, ros-galactic-std-msgs, ros-galactic-ros-workspace, ros-galactic-rosidl-typesupport-fastrtps-c, ros-galactic-rosidl-typesupport-fastrtps-cpp
+Homepage: http://ros.org/wiki/velodyne_msgs
+Standards-Version: 3.9.2
+
+Package: ros-galactic-velodyne-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-builtin-interfaces, ros-galactic-rosidl-default-runtime, ros-galactic-std-msgs, ros-galactic-ros-workspace
+Description: ROS message definitions for Velodyne 3D LIDARs.
