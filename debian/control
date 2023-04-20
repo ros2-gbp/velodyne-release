@@ -1,0 +1,12 @@
+Source: ros-iron-velodyne-laserscan
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-iron-ament-cmake-ros, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-sensor-msgs, ros-iron-ros-workspace
+Homepage: http://ros.org/wiki/velodyne_laserscan
+Standards-Version: 3.9.2
+
+Package: ros-iron-velodyne-laserscan
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-sensor-msgs, ros-iron-ros-workspace
+Description: Extract a single ring of a Velodyne PointCloud2 and publish it as a LaserScan message
