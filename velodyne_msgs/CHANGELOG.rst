@@ -1,6 +1,9 @@
 Change history
 ==============
 
+2.4.0 (2023-05-27)
+------------------
+
 2.3.0 (2022-07-08)
 ------------------
 * Updating maintainer email address. (`#450 <https://github.com/ros-drivers/velodyne/issues/450>`_)
