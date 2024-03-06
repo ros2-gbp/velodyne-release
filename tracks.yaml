@@ -313,7 +313,7 @@ tracks:
     last_version: 2.3.0
     name: velodyne
     patches: null
-    release_inc: '2'
+    release_inc: '3'
     release_repo_url: git@github.com:ros2-gbp/velodyne-release.git
     release_tag: :{version}
     ros_distro: rolling
