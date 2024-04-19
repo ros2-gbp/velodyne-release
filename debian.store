@@ -1,1 +1,1 @@
-{"base": "59f1fe35", "parent": "debian/rolling/velodyne_driver", "previous": "7084c4f4", "trim": "", "trimbase": ""}
+{"base": "1e691846", "parent": "debian/jazzy/velodyne_driver", "previous": "cc8ae46a", "trim": "", "trimbase": ""}
