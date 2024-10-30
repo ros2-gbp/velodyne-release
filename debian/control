@@ -1,0 +1,12 @@
+Source: ros-iron-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-iron-ament-cmake-gtest <!nocheck>, ros-iron-ament-cmake-ros, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-diagnostic-updater, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-tf2-ros, ros-iron-velodyne-msgs, ros-iron-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-iron-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-iron-diagnostic-updater, ros-iron-rclcpp, ros-iron-rclcpp-components, ros-iron-tf2-ros, ros-iron-velodyne-msgs, ros-iron-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
