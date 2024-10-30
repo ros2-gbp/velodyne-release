@@ -1,0 +1,12 @@
+Source: ros-humble-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-humble-ament-cmake, ros-humble-ament-cmake-gtest <!nocheck>, ros-humble-ament-index-cpp <!nocheck>, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-angles, ros-humble-diagnostic-updater, ros-humble-geometry-msgs, ros-humble-message-filters, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-sensor-msgs, ros-humble-tf2, ros-humble-tf2-ros, ros-humble-velodyne-msgs, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-humble-angles, ros-humble-diagnostic-updater, ros-humble-geometry-msgs, ros-humble-message-filters, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-sensor-msgs, ros-humble-tf2, ros-humble-tf2-ros, ros-humble-velodyne-msgs, ros-humble-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
