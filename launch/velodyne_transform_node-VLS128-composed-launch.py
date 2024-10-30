@@ -45,20 +45,20 @@ import yaml
 
 def generate_launch_description():
     share_dir = ament_index_python.packages.get_package_share_directory('velodyne_pointcloud')
-    params_file = os.path.join(share_dir, 'config', 'VLP32C-velodyne_convert_node-params.yaml')
+    params_file = os.path.join(share_dir, 'config', 'VLS128-velodyne_transform_node-params.yaml')
     with open(params_file, 'r') as f:
-        params = yaml.safe_load(f)['velodyne_convert_node']['ros__parameters']
-    params['calibration'] = os.path.join(share_dir, 'params', 'VeloView-VLP-32C.yaml')
+        params = yaml.safe_load(f)['velodyne_transform_node']['ros__parameters']
+    params['calibration'] = os.path.join(share_dir, 'params', 'VLS128.yaml')
     container = ComposableNodeContainer(
-            name='velodyne_pointcloud_convert_container',
+            name='velodyne_pointcloud_transform_container',
             namespace='',
             package='rclcpp_components',
             executable='component_container',
             composable_node_descriptions=[
                 ComposableNode(
                     package='velodyne_pointcloud',
-                    plugin='velodyne_pointcloud::Convert',
-                    name='velodyne_convert_node',
+                    plugin='velodyne_pointcloud::Transform',
+                    name='velodyne_transform_node',
                     parameters=[params]),
             ],
             output='both',
