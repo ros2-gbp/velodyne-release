@@ -35,12 +35,9 @@
  *  ROS driver implementation for the Velodyne 3D LIDARs
  */
 
-#include <rcl_interfaces/msg/floating_point_range.hpp>
-#include <rcl_interfaces/msg/parameter_descriptor.hpp>
-#include <rclcpp/rclcpp.hpp>
-#include <rclcpp_components/register_node_macro.hpp>
+#include "velodyne_driver/driver.hpp"
+
 #include <tf2_ros/transform_listener.h>
-#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 #include <chrono>
 #include <cmath>
@@ -48,7 +45,11 @@
 #include <string>
 #include <utility>
 
-#include "velodyne_driver/driver.hpp"
+#include <rcl_interfaces/msg/floating_point_range.hpp>
+#include <rcl_interfaces/msg/parameter_descriptor.hpp>
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_components/register_node_macro.hpp>
+#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 namespace velodyne_driver
 {
@@ -70,7 +71,7 @@ VelodyneDriver::VelodyneDriver(const rclcpp::NodeOptions & options)
   offset_desc.floating_point_range.push_back(offset_range);
   config_.time_offset = this->declare_parameter("time_offset", 0.0, offset_desc);
 
-  config_.enabled = this->declare_parameter("enabled", true);
+  config_.enabled.store(this->declare_parameter("enabled", true));
   bool read_once = this->declare_parameter("read_once", false);
   bool read_fast = this->declare_parameter("read_fast", false);
   double repeat_delay = this->declare_parameter("repeat_delay", 0.0);
@@ -78,18 +79,27 @@ VelodyneDriver::VelodyneDriver(const rclcpp::NodeOptions & options)
   config_.model = this->declare_parameter("model", std::string("64E"));
   config_.rpm = this->declare_parameter("rpm", 600.0);
   std::string dump_file = this->declare_parameter("pcap", std::string(""));
-  double cut_angle = this->declare_parameter("cut_angle", 2.0 * M_PI);
+  double cut_angle = this->declare_parameter("cut_angle", -1.0);
   int udp_port = this->declare_parameter("port", static_cast<int>(DATA_PORT_NUMBER));
   config_.timestamp_first_packet = this->declare_parameter("timestamp_first_packet", false);
+
+  param_subscriber_ = std::make_shared<rclcpp::ParameterEventHandler>(this);
+  param_enabled_cb_handle_ = param_subscriber_->add_parameter_callback(
+    "enabled", [this](const rclcpp::Parameter & p) {this->config_.enabled.store(p.as_bool());});
 
   future_ = exit_signal_.get_future();
 
   // get model name, validate string, determine packet rate
   double packet_rate;                   // packet frequency (Hz)
   std::string model_full_name;
-  if ((config_.model == "64E_S2") ||
-    (config_.model == "64E_S2.1"))
-  {                                     // generates 1333312 points per second
+  if (config_.model == "VLS128") {
+    packet_rate = 6253.9;   // 3 firing cycles in a data packet.
+                            // 3 x 53.3 μs = 0.1599 ms is the accumulation delay per packet.
+                            // 1 packet/0.1599 ms = 6253.9 packets/second
+
+    model_full_name = config_.model;
+  } else if ((config_.model == "64E_S2") || (config_.model == "64E_S2.1")) {
+    // generates 1333312 points per second
     packet_rate = 3472.17;              // 1 packet holds 384 points - 1333312 / 384
     model_full_name = std::string("HDL-") + config_.model;
   } else if (config_.model == "64E") {
@@ -190,7 +200,7 @@ VelodyneDriver::~VelodyneDriver()
  */
 bool VelodyneDriver::poll()
 {
-  if (!config_.enabled) {
+  if (!config_.enabled.load()) {
     // If we are not enabled exit once a second to let the caller handle
     // anything it might need to, such as if it needs to exit.
     std::this_thread::sleep_for(std::chrono::seconds(1));
