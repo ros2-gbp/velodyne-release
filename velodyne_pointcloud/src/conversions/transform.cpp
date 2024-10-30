@@ -32,10 +32,6 @@
 
 #include "velodyne_pointcloud/transform.hpp"
 
-#include <rcl_interfaces/msg/floating_point_range.hpp>
-#include <rcl_interfaces/msg/parameter_descriptor.hpp>
-#include <rclcpp/rclcpp.hpp>
-#include <rclcpp_components/register_node_macro.hpp>
 #include <tf2_ros/message_filter.h>
 #include <tf2_ros/transform_listener.h>
 
@@ -43,6 +39,11 @@
 #include <functional>
 #include <memory>
 #include <string>
+
+#include <rcl_interfaces/msg/floating_point_range.hpp>
+#include <rcl_interfaces/msg/parameter_descriptor.hpp>
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_components/register_node_macro.hpp>
 
 #include "velodyne_pointcloud/organized_cloudXYZIRT.hpp"
 #include "velodyne_pointcloud/pointcloudXYZIRT.hpp"
@@ -74,7 +75,7 @@ Transform::Transform(const rclcpp::NodeOptions & options)
   max_range_desc.description = "maximum range to publish";
   rcl_interfaces::msg::FloatingPointRange max_range_range;
   max_range_range.from_value = 0.1;
-  max_range_range.to_value = 200.0;
+  max_range_range.to_value = 300.0;
   max_range_desc.floating_point_range.push_back(max_range_range);
   double max_range = this->declare_parameter("max_range", 130.0, max_range_desc);
 
