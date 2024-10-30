@@ -1,6 +1,20 @@
 Change history
 ==============
 
+2.5.0 (2024-10-30)
+------------------
+* Clalancette/cmake cleanups (`#546 <https://github.com/ros-drivers/velodyne/issues/546>`_)
+* Fix exports (`#535 <https://github.com/ros-drivers/velodyne/issues/535>`_)
+* Add in the Eigen dependency to velodyne_pointcloud (`#545 <https://github.com/ros-drivers/velodyne/issues/545>`_)
+* Add package to compile in Jazzy (`#539 <https://github.com/ros-drivers/velodyne/issues/539>`_)
+* Feature script add two pt ros2 (`#498 <https://github.com/ros-drivers/velodyne/issues/498>`_)
+* delete unused valiable (`#529 <https://github.com/ros-drivers/velodyne/issues/529>`_)
+* Add vert offset corrections to VLP16 calib file (`#518 <https://github.com/ros-drivers/velodyne/issues/518>`_)
+* Fix double-include.
+* feat: support vls128 for ros2 (`#493 <https://github.com/ros-drivers/velodyne/issues/493>`_)
+* Update rolling ci (`#512 <https://github.com/ros-drivers/velodyne/issues/512>`_) (`#513 <https://github.com/ros-drivers/velodyne/issues/513>`_)
+* Contributors: Chris Lalancette, Daisuke Nishimatsu, Joshua Whitley, Mateusz Szczygielski, Pierrick Koch, Taiga Takano, Thomas Emter, g-kurz
+
 2.4.0 (2023-05-27)
 ------------------
 * Add invalid points in organized cloud (`#360 <https://github.com/ros-drivers/velodyne/issues/360>`_) (`#492 <https://github.com/ros-drivers/velodyne/issues/492>`_)

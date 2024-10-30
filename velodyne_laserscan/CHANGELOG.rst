@@ -2,6 +2,12 @@
 Changelog for package velodyne_laserscan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.5.0 (2024-10-30)
+------------------
+* Clalancette/cmake cleanups (`#546 <https://github.com/ros-drivers/velodyne/issues/546>`_)
+* Update rolling ci (`#512 <https://github.com/ros-drivers/velodyne/issues/512>`_) (`#513 <https://github.com/ros-drivers/velodyne/issues/513>`_)
+* Contributors: Chris Lalancette, Joshua Whitley
+
 2.4.0 (2023-05-27)
 ------------------
 * using std::round to calculate the scan array size (`#459 <https://github.com/ros-drivers/velodyne/issues/459>`_)
