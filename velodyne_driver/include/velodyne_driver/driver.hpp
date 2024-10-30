@@ -33,13 +33,14 @@
 #ifndef VELODYNE_DRIVER__DRIVER_HPP_
 #define VELODYNE_DRIVER__DRIVER_HPP_
 
-#include <diagnostic_updater/diagnostic_updater.hpp>
-#include <diagnostic_updater/publisher.hpp>
-#include <rclcpp/rclcpp.hpp>
-
+#include <atomic>
 #include <future>
 #include <memory>
 #include <string>
+
+#include <diagnostic_updater/diagnostic_updater.hpp>
+#include <diagnostic_updater/publisher.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 #include "velodyne_driver/input.hpp"
 
@@ -70,7 +71,7 @@ private:
     double rpm;                      // device rotation rate (RPMs)
     int cut_angle;                   // cutting angle in radians
     double time_offset;              // time in seconds added to each velodyne time stamp
-    bool enabled;                    // polling is enabled
+    std::atomic<bool> enabled;       // polling is enabled
     bool timestamp_first_packet;     // timestamp based on first packet instead of last one
   }
   config_;
@@ -84,6 +85,9 @@ private:
   double diag_min_freq_;
   double diag_max_freq_;
   std::unique_ptr<diagnostic_updater::TopicDiagnostic> diag_topic_;
+
+  std::shared_ptr<rclcpp::ParameterEventHandler> param_subscriber_;
+  std::shared_ptr<rclcpp::ParameterCallbackHandle> param_enabled_cb_handle_;
 
   // We use this future/promise pair to notify threads that we are shutting down
   std::shared_future<void> future_;

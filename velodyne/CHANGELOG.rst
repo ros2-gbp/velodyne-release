@@ -1,6 +1,11 @@
 Change history
 ==============
 
+2.5.0 (2024-10-30)
+------------------
+* feat: support vls128 for ros2 (`#493 <https://github.com/ros-drivers/velodyne/issues/493>`_)
+* Contributors: Daisuke Nishimatsu
+
 2.4.0 (2023-05-27)
 ------------------
 * Unify tf frame parameters between transform and cloud nodes (`#344 <https://github.com/ros-drivers/velodyne/issues/344>`_) (`#453 <https://github.com/ros-drivers/velodyne/issues/453>`_)
