@@ -1,6 +1,14 @@
 Change history
 ==============
 
+2.5.0 (2024-10-30)
+------------------
+* feat(config): make parameter 'enabled' dynamic (`#548 <https://github.com/ros-drivers/velodyne/issues/548>`_)
+* Clalancette/cmake cleanups (`#546 <https://github.com/ros-drivers/velodyne/issues/546>`_)
+* feat: support vls128 for ros2 (`#493 <https://github.com/ros-drivers/velodyne/issues/493>`_)
+* Update rolling ci (`#512 <https://github.com/ros-drivers/velodyne/issues/512>`_) (`#513 <https://github.com/ros-drivers/velodyne/issues/513>`_)
+* Contributors: Chris Lalancette, Daisuke Nishimatsu, Joshua Whitley
+
 2.4.0 (2023-05-27)
 ------------------
 * Disable cut_angle by default. (`#497 <https://github.com/ros-drivers/velodyne/issues/497>`_)
