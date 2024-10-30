@@ -33,18 +33,19 @@
 #ifndef VELODYNE_POINTCLOUD__TRANSFORM_HPP_
 #define VELODYNE_POINTCLOUD__TRANSFORM_HPP_
 
-#include <diagnostic_updater/diagnostic_updater.hpp>
-#include <diagnostic_updater/publisher.hpp>
 #include <message_filters/subscriber.h>
-#include <rclcpp/rclcpp.hpp>
-#include <sensor_msgs/msg/point_cloud2.hpp>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/message_filter.h>
 #include <tf2_ros/transform_listener.h>
-#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 #include <memory>
 #include <string>
+
+#include <diagnostic_updater/diagnostic_updater.hpp>
+#include <diagnostic_updater/publisher.hpp>
+#include <rclcpp/rclcpp.hpp>
+#include <sensor_msgs/msg/point_cloud2.hpp>
+#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 #include "velodyne_pointcloud/pointcloudXYZIRT.hpp"
 #include "velodyne_pointcloud/rawdata.hpp"
@@ -63,13 +64,11 @@ public:
   Transform & operator=(const Transform & c) = delete;
 
 private:
-  void processScan(const std::shared_ptr<const velodyne_msgs::msg::VelodyneScan> & scanMsg);
+  void processScan(const velodyne_msgs::msg::VelodyneScan::ConstSharedPtr scanMsg);
 
   std::unique_ptr<velodyne_rawdata::RawData> data_;
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr output_;
-  message_filters::Subscriber<velodyne_msgs::msg::VelodyneScan> velodyne_scan_;
-  tf2_ros::Buffer tf_buffer_;
-  std::unique_ptr<tf2_ros::MessageFilter<velodyne_msgs::msg::VelodyneScan>> tf_filter_;
+  rclcpp::Subscription<velodyne_msgs::msg::VelodyneScan>::SharedPtr velodyne_scan_;
 
   std::unique_ptr<velodyne_rawdata::DataContainerBase> container_ptr_;
 
