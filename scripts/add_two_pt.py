@@ -1,4 +1,6 @@
-# Copyright 2019 Open Source Robotics Foundation, Inc.
+#!/usr/bin/python3
+
+# Copyright 2023 Pierrick Koch
 # All rights reserved.
 #
 # Software License Agreement (BSD License 2.0)
@@ -30,34 +32,21 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-"""Launch the velodyne pointcloud convert node with default configuration."""
+"""
+usage: add_two_pt.py < calibration.yaml > calibration_two_pt.yaml.
 
-import os
+In order to take into acount *HDL-64* correction_{x,y}, related to 2012 merge:
+https://github.com/ros-drivers/velodyne/commit/f30d68735c47312aa73d29203ddb16abc01357f4
 
-import ament_index_python.packages
-import launch
-import launch_ros.actions
+https://github.com/ros-drivers/velodyne/blob/master/velodyne_pointcloud/src/lib/rawdata.cc#L438
+https://github.com/ros-drivers/velodyne/blob/master/velodyne_pointcloud/src/lib/calibration.cc#L70
+"""
+import sys
 
 import yaml
 
+calibration = yaml.safe_load(sys.stdin)
+for laser in calibration['lasers']:
+    laser['two_pt_correction_available'] = True
 
-def generate_launch_description():
-    share_dir = ament_index_python.packages.get_package_share_directory('velodyne_pointcloud')
-    params_file = os.path.join(share_dir, 'config', 'VLP32C-velodyne_convert_node-params.yaml')
-    with open(params_file, 'r') as f:
-        params = yaml.safe_load(f)['velodyne_convert_node']['ros__parameters']
-    params['calibration'] = os.path.join(share_dir, 'params', 'VeloView-VLP-32C.yaml')
-    velodyne_convert_node = launch_ros.actions.Node(package='velodyne_pointcloud',
-                                                    executable='velodyne_convert_node',
-                                                    output='both',
-                                                    parameters=[params])
-
-    return launch.LaunchDescription([velodyne_convert_node,
-
-                                     launch.actions.RegisterEventHandler(
-                                         event_handler=launch.event_handlers.OnProcessExit(
-                                             target_action=velodyne_convert_node,
-                                             on_exit=[launch.actions.EmitEvent(
-                                                 event=launch.events.Shutdown())],
-                                         )),
-                                     ])
+print(yaml.safe_dump(calibration))
