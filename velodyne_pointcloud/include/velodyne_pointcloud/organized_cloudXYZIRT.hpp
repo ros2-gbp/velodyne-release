@@ -33,12 +33,13 @@
 #ifndef VELODYNE_POINTCLOUD__ORGANIZED_CLOUDXYZIRT_HPP_
 #define VELODYNE_POINTCLOUD__ORGANIZED_CLOUDXYZIRT_HPP_
 
-#include <sensor_msgs/point_cloud2_iterator.hpp>
 #include <tf2/buffer_core.h>
-#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 #include <memory>
 #include <string>
+
+#include <sensor_msgs/point_cloud2_iterator.hpp>
+#include <velodyne_msgs/msg/velodyne_scan.hpp>
 
 #include "velodyne_pointcloud/datacontainerbase.hpp"
 
@@ -48,14 +49,14 @@ class OrganizedCloudXYZIRT final
   : public velodyne_rawdata::DataContainerBase
 {
 public:
-  explicit OrganizedCloudXYZIRT(
+  OrganizedCloudXYZIRT(
     const double min_range, const double max_range, const std::string & target_frame,
     const std::string & fixed_frame, const unsigned int num_lasers,
-    const unsigned int scans_per_block, tf2::BufferCore & buffer);
+    const unsigned int scans_per_block, rclcpp::Clock::SharedPtr clock);
 
   void newLine() override;
 
-  void setup(const velodyne_msgs::msg::VelodyneScan::SharedPtr scan_msg) override;
+  void setup(const velodyne_msgs::msg::VelodyneScan::ConstSharedPtr scan_msg) override;
 
   void addPoint(
     float x, float y, float z, const uint16_t ring,
