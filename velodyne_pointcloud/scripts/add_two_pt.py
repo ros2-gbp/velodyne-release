@@ -1,4 +1,6 @@
-# Copyright 2019 Open Source Robotics Foundation, Inc.
+#!/usr/bin/python3
+
+# Copyright 2023 Pierrick Koch
 # All rights reserved.
 #
 # Software License Agreement (BSD License 2.0)
@@ -30,38 +32,21 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-"""Launch the velodyne pointcloud convert with default configuration."""
+"""
+usage: add_two_pt.py < calibration.yaml > calibration_two_pt.yaml.
 
-import os
+In order to take into acount *HDL-64* correction_{x,y}, related to 2012 merge:
+https://github.com/ros-drivers/velodyne/commit/f30d68735c47312aa73d29203ddb16abc01357f4
 
-import ament_index_python.packages
-
-from launch import LaunchDescription
-from launch_ros.actions import ComposableNodeContainer
-from launch_ros.descriptions import ComposableNode
+https://github.com/ros-drivers/velodyne/blob/master/velodyne_pointcloud/src/lib/rawdata.cc#L438
+https://github.com/ros-drivers/velodyne/blob/master/velodyne_pointcloud/src/lib/calibration.cc#L70
+"""
+import sys
 
 import yaml
 
+calibration = yaml.safe_load(sys.stdin)
+for laser in calibration['lasers']:
+    laser['two_pt_correction_available'] = True
 
-def generate_launch_description():
-    share_dir = ament_index_python.packages.get_package_share_directory('velodyne_pointcloud')
-    params_file = os.path.join(share_dir, 'config', 'VLP16-velodyne_convert_node-params.yaml')
-    with open(params_file, 'r') as f:
-        params = yaml.safe_load(f)['velodyne_convert_node']['ros__parameters']
-    params['calibration'] = os.path.join(share_dir, 'params', 'VLP16db.yaml')
-    container = ComposableNodeContainer(
-            name='velodyne_pointcloud_convert_container',
-            namespace='',
-            package='rclcpp_components',
-            executable='component_container',
-            composable_node_descriptions=[
-                ComposableNode(
-                    package='velodyne_pointcloud',
-                    plugin='velodyne_pointcloud::Convert',
-                    name='velodyne_convert_node',
-                    parameters=[params]),
-            ],
-            output='both',
-    )
-
-    return LaunchDescription([container])
+print(yaml.safe_dump(calibration))
