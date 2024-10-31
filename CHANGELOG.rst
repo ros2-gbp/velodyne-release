@@ -1,6 +1,9 @@
 Change history
 ==============
 
+2.5.1 (2024-10-31)
+------------------
+
 2.5.0 (2024-10-30)
 ------------------
 * Clalancette/cmake cleanups (`#546 <https://github.com/ros-drivers/velodyne/issues/546>`_)
