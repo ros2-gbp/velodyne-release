@@ -1,6 +1,9 @@
 Change history
 ==============
 
+2.5.1 (2024-10-31)
+------------------
+
 2.5.0 (2024-10-30)
 ------------------
 * feat(config): make parameter 'enabled' dynamic (`#548 <https://github.com/ros-drivers/velodyne/issues/548>`_)
