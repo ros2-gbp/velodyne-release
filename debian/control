@@ -1,0 +1,12 @@
+Source: ros-kilted-velodyne-driver
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libpcap0.8-dev, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-ament-cmake-ros, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-diagnostic-updater, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-tf2-ros, ros-kilted-velodyne-msgs, ros-kilted-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne_driver
+Standards-Version: 3.9.2
+
+Package: ros-kilted-velodyne-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8-dev, ros-kilted-diagnostic-updater, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-tf2-ros, ros-kilted-velodyne-msgs, ros-kilted-ros-workspace
+Description: ROS device driver for Velodyne 3D LIDARs.
