@@ -1,0 +1,12 @@
+Source: ros-kilted-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-kilted-ament-cmake, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-ament-index-cpp <!nocheck>, ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-angles, ros-kilted-diagnostic-updater, ros-kilted-geometry-msgs, ros-kilted-message-filters, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-sensor-msgs, ros-kilted-tf2, ros-kilted-tf2-ros, ros-kilted-velodyne-msgs, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-kilted-angles, ros-kilted-diagnostic-updater, ros-kilted-geometry-msgs, ros-kilted-message-filters, ros-kilted-rclcpp, ros-kilted-rclcpp-components, ros-kilted-sensor-msgs, ros-kilted-tf2, ros-kilted-tf2-ros, ros-kilted-velodyne-msgs, ros-kilted-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
