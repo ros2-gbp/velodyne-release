@@ -1,0 +1,12 @@
+Source: ros-lyrical-velodyne
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-velodyne-driver, ros-lyrical-velodyne-laserscan, ros-lyrical-velodyne-msgs, ros-lyrical-velodyne-pointcloud, ros-lyrical-ros-workspace
+Description: Basic ROS support for the Velodyne 3D LIDARs.
