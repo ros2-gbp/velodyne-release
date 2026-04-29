@@ -1,1 +1,1 @@
-{"base": "96b263ac8a99", "parent": "debian/rolling/velodyne_msgs", "previous": "075a1bb42320", "trim": "", "trimbase": ""}
+{"base": "f2a499e150c9", "parent": "debian/lyrical/velodyne_msgs", "previous": "93ac3bc66939", "trim": "", "trimbase": ""}
