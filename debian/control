@@ -1,0 +1,12 @@
+Source: ros-lyrical-velodyne-pointcloud
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-index-cpp <!nocheck>, ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-angles, ros-lyrical-diagnostic-updater, ros-lyrical-geometry-msgs, ros-lyrical-message-filters, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-sensor-msgs, ros-lyrical-tf2, ros-lyrical-tf2-ros, ros-lyrical-velodyne-msgs, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/velodyne_pointcloud/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-velodyne-pointcloud
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libpcl-dev, libyaml-cpp-dev, ros-lyrical-angles, ros-lyrical-diagnostic-updater, ros-lyrical-geometry-msgs, ros-lyrical-message-filters, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-sensor-msgs, ros-lyrical-tf2, ros-lyrical-tf2-ros, ros-lyrical-velodyne-msgs, ros-lyrical-ros-workspace
+Description: Point cloud conversions for Velodyne 3D LIDARs.
