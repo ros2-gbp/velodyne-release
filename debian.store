@@ -1,1 +1,1 @@
-{"base": "fe6f3269dfe2", "parent": "debian/rolling/velodyne_laserscan", "previous": "065035b5cdcf", "trim": "", "trimbase": ""}
+{"base": "6109507cbd78", "parent": "debian/lyrical/velodyne_laserscan", "previous": "a469cfd22372", "trim": "", "trimbase": ""}
