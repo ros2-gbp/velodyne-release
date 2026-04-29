@@ -1,0 +1,12 @@
+Source: ros-rolling-velodyne
+Section: misc
+Priority: optional
+Maintainer: Josh Whitley <whitleysoftwareservices@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ros-workspace
+Homepage: http://www.ros.org/wiki/velodyne
+Standards-Version: 3.9.2
+
+Package: ros-rolling-velodyne
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-velodyne-driver, ros-rolling-velodyne-laserscan, ros-rolling-velodyne-msgs, ros-rolling-velodyne-pointcloud, ros-rolling-ros-workspace
+Description: Basic ROS support for the Velodyne 3D LIDARs.
